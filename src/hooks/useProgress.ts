@@ -1,12 +1,30 @@
 import { useState, useCallback } from "react";
 import { curriculum as initialCurriculum, Level } from "@/data/curriculum";
 
+// Bump this version whenever the curriculum structure changes significantly
+const CURRICULUM_VERSION = "v2-15lessons";
+
 export function useProgress() {
   const [levels, setLevels] = useState<Level[]>(() => {
+    const savedVersion = localStorage.getItem("romanap-curriculum-version");
+    if (savedVersion !== CURRICULUM_VERSION) {
+      // Curriculum updated — clear old progress and use fresh data
+      localStorage.removeItem("romanap-progress");
+      localStorage.setItem("romanap-curriculum-version", CURRICULUM_VERSION);
+      return initialCurriculum;
+    }
     const saved = localStorage.getItem("romanap-progress");
     if (saved) {
       try {
-        return JSON.parse(saved);
+        const parsed: Level[] = JSON.parse(saved);
+        // Ensure lesson count matches (safety check)
+        const a1 = parsed.find(l => l.id === "a1");
+        const a1Current = initialCurriculum.find(l => l.id === "a1");
+        if (a1 && a1Current && a1.lessons.length !== a1Current.lessons.length) {
+          localStorage.removeItem("romanap-progress");
+          return initialCurriculum;
+        }
+        return parsed;
       } catch {
         return initialCurriculum;
       }

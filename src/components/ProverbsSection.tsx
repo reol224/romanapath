@@ -37,24 +37,24 @@ export function ProverbsSection({ isOpen, onClose }: ProverbsSectionProps) {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       className="fixed inset-0 z-50 flex items-center justify-center p-4"
-      style={{ backgroundColor: "rgba(30,26,22,0.7)", backdropFilter: "blur(4px)" }}
+      style={{ backgroundColor: "rgba(0,0,0,0.5)", backdropFilter: "blur(2px)" }}
       onClick={e => { if (e.target === e.currentTarget) onClose(); }}
     >
       <motion.div
         initial={{ scale: 0.95, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         exit={{ scale: 0.95, opacity: 0 }}
-        className="w-full max-w-xl rounded-2xl shadow-2xl overflow-hidden"
-        style={{ backgroundColor: "#F5EFE0", border: "1px solid rgba(139,26,26,0.15)" }}
+        className="w-full max-w-xl rounded-3xl overflow-hidden"
+        style={{ backgroundColor: "#FFFFFF", boxShadow: "0 8px 0 #E5E5E5, 0 0 0 2px #E5E5E5" }}
       >
         {/* Header */}
-        <div className="px-6 py-4 flex items-center justify-between" style={{ borderBottom: "1px solid rgba(30,26,22,0.1)" }}>
+        <div className="px-6 py-5 flex items-center justify-between" style={{ borderBottom: "2px solid #F0F0F0" }}>
           <div>
-            <h2 className="font-bold text-xl" style={{ fontFamily: "Fraunces, serif", color: "#1E1A16" }}>Romanian Proverbs</h2>
-            <p className="text-xs mt-0.5" style={{ color: "#1E1A16", opacity: 0.5 }}>Wisdom of the Romanian folk tradition</p>
+            <h2 className="font-black text-xl tracking-tight" style={{ fontFamily: "Nunito, sans-serif", color: "#3C3C3C" }}>📜 Romanian Proverbs</h2>
+            <p className="text-xs font-bold mt-0.5" style={{ fontFamily: "Nunito, sans-serif", color: "#AFAFAF" }}>Wisdom of the Romanian folk tradition</p>
           </div>
-          <button onClick={onClose} className="p-2 rounded-lg hover:bg-black/5 transition-colors">
-            <X className="w-5 h-5" style={{ color: "#1E1A16" }} />
+          <button onClick={onClose} className="w-9 h-9 flex items-center justify-center rounded-xl transition-colors" style={{ backgroundColor: "#F7F7F7", border: "2px solid #E5E5E5" }}>
+            <X className="w-4 h-4" style={{ color: "#AFAFAF" }} />
           </button>
         </div>
 
@@ -69,7 +69,7 @@ export function ProverbsSection({ isOpen, onClose }: ProverbsSectionProps) {
                 style={{
                   width: i === current ? "20px" : "8px",
                   height: "8px",
-                  backgroundColor: i === current ? "#8B1A1A" : "rgba(30,26,22,0.2)",
+                  backgroundColor: i === current ? "#1CB0F6" : "#F0F0F0",
                 }}
               />
             ))}
@@ -85,10 +85,10 @@ export function ProverbsSection({ isOpen, onClose }: ProverbsSectionProps) {
             >
               {/* Theme badge */}
               <div className="flex items-center justify-between mb-4">
-                <span className="px-2.5 py-1 rounded-full text-xs font-bold" style={{ backgroundColor: tc.bg, color: tc.color }}>
+                <span className="px-2.5 py-1 rounded-full text-xs font-black border-2" style={{ fontFamily: "Nunito, sans-serif", backgroundColor: tc.bg, color: tc.color, borderColor: tc.color }}>
                   {proverb.theme}
                 </span>
-                <span className="text-xs" style={{ color: "#1E1A16", opacity: 0.35 }}>
+                <span className="text-xs font-bold" style={{ fontFamily: "Nunito, sans-serif", color: "#AFAFAF" }}>
                   {current + 1} / {proverbs.length}
                 </span>
               </div>
@@ -96,30 +96,30 @@ export function ProverbsSection({ isOpen, onClose }: ProverbsSectionProps) {
               {/* Romanian text */}
               <div
                 className="rounded-2xl p-6 mb-4 relative overflow-hidden"
-                style={{ backgroundColor: "#1E1A16" }}
+                style={{ backgroundColor: "#1CB0F6", border: "2px solid #0A90D0", boxShadow: "0 6px 0 #0A90D0" }}
               >
                 {/* Folk pattern accent */}
-                <svg className="absolute top-2 right-2 opacity-10" width="60" height="16" viewBox="0 0 80 16">
+                <svg className="absolute top-2 right-2 opacity-20" width="60" height="16" viewBox="0 0 80 16">
                   <path d="M0 8 L5 3 L10 8 L15 3 L20 8 L25 3 L30 8 L35 3 L40 8 L45 3 L50 8 L55 3 L60 8 L65 3 L70 8 L75 3 L80 8"
-                    stroke="#F5EFE0" strokeWidth="2" fill="none" />
+                    stroke="white" strokeWidth="2" fill="none" />
                 </svg>
-                <p className="text-xl leading-relaxed mb-3" style={{ fontFamily: "Fraunces, serif", color: "#F5EFE0" }}>
+                <p className="text-xl leading-relaxed mb-3 font-black" style={{ fontFamily: "Nunito, sans-serif", color: "white" }}>
                   "{proverb.romanian}"
                 </p>
-                <p className="text-xs" style={{ fontFamily: "IBM Plex Mono, monospace", color: "#C9922A" }}>
+                <p className="text-xs font-bold" style={{ fontFamily: "Nunito, sans-serif", color: "rgba(255,255,255,0.8)" }}>
                   {proverb.phonetic}
                 </p>
               </div>
 
               {/* Translations */}
               <div className="space-y-2 mb-4">
-                <div className="flex gap-3 items-start p-3 rounded-xl" style={{ backgroundColor: "rgba(30,26,22,0.04)" }}>
-                  <span className="text-xs font-bold px-2 py-0.5 rounded shrink-0 mt-0.5" style={{ backgroundColor: "rgba(30,26,22,0.1)", color: "#1E1A16" }}>Literal</span>
-                  <p className="text-sm italic" style={{ color: "#1E1A16", opacity: 0.7 }}>{proverb.literal}</p>
+                <div className="flex gap-3 items-start p-3 rounded-2xl" style={{ backgroundColor: "#F7F7F7", border: "2px solid #E5E5E5" }}>
+                  <span className="text-xs font-black px-2 py-0.5 rounded-lg shrink-0 mt-0.5" style={{ fontFamily: "Nunito, sans-serif", backgroundColor: "#E5E5E5", color: "#AFAFAF" }}>Literal</span>
+                  <p className="text-sm font-bold italic" style={{ fontFamily: "Nunito, sans-serif", color: "#AFAFAF" }}>{proverb.literal}</p>
                 </div>
-                <div className="flex gap-3 items-start p-3 rounded-xl" style={{ backgroundColor: tc.bg }}>
-                  <span className="text-xs font-bold px-2 py-0.5 rounded shrink-0 mt-0.5" style={{ backgroundColor: tc.color, color: "#F5EFE0" }}>Meaning</span>
-                  <p className="text-sm font-medium" style={{ color: tc.color }}>{proverb.idiomatic}</p>
+                <div className="flex gap-3 items-start p-3 rounded-2xl" style={{ backgroundColor: tc.bg, border: `2px solid ${tc.color}` }}>
+                  <span className="text-xs font-black px-2 py-0.5 rounded-lg shrink-0 mt-0.5" style={{ fontFamily: "Nunito, sans-serif", backgroundColor: tc.color, color: "white" }}>Meaning</span>
+                  <p className="text-sm font-bold" style={{ fontFamily: "Nunito, sans-serif", color: tc.color }}>{proverb.idiomatic}</p>
                 </div>
               </div>
 
@@ -132,12 +132,12 @@ export function ProverbsSection({ isOpen, onClose }: ProverbsSectionProps) {
                     exit={{ opacity: 0, height: 0 }}
                     className="overflow-hidden"
                   >
-                    <div className="rounded-xl p-4 mb-4" style={{ backgroundColor: "white", border: "1px solid rgba(30,26,22,0.1)" }}>
+                    <div className="rounded-2xl p-4 mb-4" style={{ backgroundColor: "white", border: "2px solid #E5E5E5" }}>
                       <div className="flex items-center gap-2 mb-2">
-                        <BookOpen className="w-4 h-4" style={{ color: "#8B1A1A" }} />
-                        <span className="text-xs font-bold uppercase tracking-wider" style={{ color: "#8B1A1A" }}>Context</span>
+                        <BookOpen className="w-4 h-4" style={{ color: "#1CB0F6" }} />
+                        <span className="text-xs font-black uppercase tracking-wider" style={{ fontFamily: "Nunito, sans-serif", color: "#1CB0F6" }}>Context</span>
                       </div>
-                      <p className="text-sm leading-relaxed" style={{ color: "#1E1A16", lineHeight: 1.75 }}>
+                      <p className="text-sm font-bold leading-relaxed" style={{ fontFamily: "Nunito, sans-serif", color: "#AFAFAF", lineHeight: 1.75 }}>
                         {proverb.explanation}
                       </p>
                     </div>
@@ -147,8 +147,8 @@ export function ProverbsSection({ isOpen, onClose }: ProverbsSectionProps) {
 
               <button
                 onClick={() => setExpanded(e => !e)}
-                className="w-full text-center text-xs mb-4 underline transition-opacity hover:opacity-70"
-                style={{ color: "#8B1A1A" }}
+                className="w-full text-center text-xs mb-4 font-black underline transition-opacity hover:opacity-70"
+                style={{ fontFamily: "Nunito, sans-serif", color: "#1CB0F6" }}
               >
                 {expanded ? "Hide" : "Show"} cultural context
               </button>
@@ -159,15 +159,15 @@ export function ProverbsSection({ isOpen, onClose }: ProverbsSectionProps) {
           <div className="flex gap-2">
             <button
               onClick={prev}
-              className="flex-1 py-3 rounded-xl border font-semibold text-sm flex items-center justify-center gap-2 transition-all hover:bg-black/5"
-              style={{ borderColor: "rgba(30,26,22,0.2)", color: "#1E1A16" }}
+              className="flex-1 py-3 rounded-2xl border-2 font-black text-sm flex items-center justify-center gap-2 transition-all"
+              style={{ borderColor: "#E5E5E5", color: "#AFAFAF", fontFamily: "Nunito, sans-serif", boxShadow: "0 4px 0 #E5E5E5" }}
             >
               <ChevronLeft className="w-4 h-4" /> Previous
             </button>
             <button
               onClick={next}
-              className="flex-1 py-3 rounded-xl font-semibold text-sm flex items-center justify-center gap-2 transition-all hover:opacity-90"
-              style={{ backgroundColor: "#8B1A1A", color: "#F5EFE0" }}
+              className="flex-1 py-3 rounded-2xl font-black text-sm flex items-center justify-center gap-2 transition-all"
+              style={{ backgroundColor: "#1CB0F6", color: "white", fontFamily: "Nunito, sans-serif", boxShadow: "0 4px 0 #0A90D0" }}
             >
               Next <ChevronRight className="w-4 h-4" />
             </button>

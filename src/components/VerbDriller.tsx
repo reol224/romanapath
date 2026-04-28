@@ -75,24 +75,24 @@ export function VerbDriller({ isOpen, onClose, onDrilled }: VerbDrillerProps) {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       className="fixed inset-0 z-50 flex items-center justify-center p-4"
-      style={{ backgroundColor: "rgba(30,26,22,0.7)", backdropFilter: "blur(4px)" }}
+      style={{ backgroundColor: "rgba(0,0,0,0.5)", backdropFilter: "blur(2px)" }}
       onClick={e => { if (e.target === e.currentTarget) onClose(); }}
     >
       <motion.div
         initial={{ scale: 0.95, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         exit={{ scale: 0.95, opacity: 0 }}
-        className="w-full max-w-xl rounded-2xl shadow-2xl overflow-hidden"
-        style={{ backgroundColor: "#F5EFE0", border: "1px solid rgba(139,26,26,0.15)" }}
+        className="w-full max-w-xl rounded-3xl overflow-hidden"
+        style={{ backgroundColor: "#FFFFFF", boxShadow: "0 8px 0 #E5E5E5, 0 0 0 2px #E5E5E5" }}
       >
         {/* Header */}
-        <div className="px-6 py-4 flex items-center justify-between" style={{ borderBottom: "1px solid rgba(30,26,22,0.1)" }}>
+        <div className="px-6 py-5 flex items-center justify-between" style={{ borderBottom: "2px solid #F0F0F0" }}>
           <div>
-            <h2 className="font-bold text-xl" style={{ fontFamily: "Fraunces, serif", color: "#1E1A16" }}>Verb Conjugation Driller</h2>
-            <p className="text-xs mt-0.5" style={{ color: "#1E1A16", opacity: 0.5 }}>All 6 persons, multiple tenses</p>
+            <h2 className="font-black text-xl tracking-tight" style={{ fontFamily: "Nunito, sans-serif", color: "#3C3C3C" }}>🔤 Verb Conjugation Driller</h2>
+            <p className="text-xs font-bold mt-0.5" style={{ fontFamily: "Nunito, sans-serif", color: "#AFAFAF" }}>All 6 persons, multiple tenses</p>
           </div>
-          <button onClick={onClose} className="p-2 rounded-lg hover:bg-black/5 transition-colors">
-            <X className="w-5 h-5" style={{ color: "#1E1A16" }} />
+          <button onClick={onClose} className="w-9 h-9 flex items-center justify-center rounded-xl transition-colors" style={{ backgroundColor: "#F7F7F7", border: "2px solid #E5E5E5" }}>
+            <X className="w-4 h-4" style={{ color: "#AFAFAF" }} />
           </button>
         </div>
 
@@ -101,14 +101,14 @@ export function VerbDriller({ isOpen, onClose, onDrilled }: VerbDrillerProps) {
           <div className="relative mb-4">
             <button
               onClick={() => setVerbOpen(o => !o)}
-              className="w-full flex items-center justify-between px-4 py-3 rounded-xl border-2 font-semibold transition-all"
-              style={{ borderColor: "#8B1A1A", color: "#1E1A16", backgroundColor: "white" }}
+              className="w-full flex items-center justify-between px-4 py-3 rounded-2xl font-black transition-all"
+              style={{ border: "2px solid #E5E5E5", color: "#3C3C3C", backgroundColor: "white", boxShadow: "0 4px 0 #E5E5E5", fontFamily: "Nunito, sans-serif" }}
             >
               <span>
-                <span style={{ fontFamily: "Fraunces, serif", color: "#8B1A1A" }}>{verb.infinitive}</span>
-                <span className="ml-2 text-sm opacity-60">— {verb.english} ({verb.group})</span>
+                <span style={{ color: "#1CB0F6" }}>{verb.infinitive}</span>
+                <span className="ml-2 text-sm font-bold" style={{ color: "#AFAFAF" }}>— {verb.english} ({verb.group})</span>
               </span>
-              <ChevronDown className={`w-4 h-4 transition-transform ${verbOpen ? "rotate-180" : ""}`} style={{ color: "#8B1A1A" }} />
+              <ChevronDown className={`w-4 h-4 transition-transform ${verbOpen ? "rotate-180" : ""}`} style={{ color: "#AFAFAF" }} />
             </button>
             <AnimatePresence>
               {verbOpen && (
@@ -116,17 +116,17 @@ export function VerbDriller({ isOpen, onClose, onDrilled }: VerbDrillerProps) {
                   initial={{ opacity: 0, y: -8 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -8 }}
-                  className="absolute top-full left-0 right-0 mt-1 rounded-xl overflow-hidden shadow-xl z-10"
-                  style={{ backgroundColor: "white", border: "1px solid rgba(30,26,22,0.15)" }}
+                  className="absolute top-full left-0 right-0 mt-1 rounded-2xl overflow-hidden z-10"
+                  style={{ backgroundColor: "white", border: "2px solid #E5E5E5", boxShadow: "0 8px 0 #E5E5E5" }}
                 >
                   {verbs.map((v, i) => (
                     <button
                       key={v.id}
                       onClick={() => { setSelectedVerb(i); setVerbOpen(false); setSelectedTense(null); setQuizMode(false); }}
-                      className="w-full px-4 py-3 text-left flex justify-between items-center hover:bg-[#F5EFE0] transition-colors"
+                      className="w-full px-4 py-3 text-left flex justify-between items-center hover:bg-[#F7F7F7] transition-colors"
                     >
-                      <span className="font-semibold" style={{ fontFamily: "Fraunces, serif", color: "#8B1A1A" }}>{v.infinitive}</span>
-                      <span className="text-sm" style={{ color: "#1E1A16", opacity: 0.5 }}>{v.english}</span>
+                      <span className="font-black" style={{ fontFamily: "Nunito, sans-serif", color: "#1CB0F6" }}>{v.infinitive}</span>
+                      <span className="text-sm font-bold" style={{ fontFamily: "Nunito, sans-serif", color: "#AFAFAF" }}>{v.english}</span>
                     </button>
                   ))}
                 </motion.div>
@@ -140,12 +140,13 @@ export function VerbDriller({ isOpen, onClose, onDrilled }: VerbDrillerProps) {
               <button
                 key={tense}
                 onClick={() => { setSelectedTense(tense); setQuizMode(false); }}
-                className="px-3 py-1.5 rounded-full text-xs font-semibold border transition-all"
+                className="px-3 py-1.5 rounded-full text-xs font-black border-2 transition-all"
                 style={{
-                  backgroundColor: activeTense === tense ? "#1E1A16" : "transparent",
-                  color: activeTense === tense ? "#F5EFE0" : "#1E1A16",
-                  borderColor: "#1E1A16",
-                  opacity: activeTense === tense ? 1 : 0.6,
+                  backgroundColor: activeTense === tense ? "#1CB0F6" : "white",
+                  color: activeTense === tense ? "white" : "#AFAFAF",
+                  borderColor: activeTense === tense ? "#1CB0F6" : "#E5E5E5",
+                  fontFamily: "Nunito, sans-serif",
+                  boxShadow: activeTense === tense ? "0 3px 0 #0A90D0" : "0 3px 0 #E5E5E5",
                 }}
               >
                 {tense}
@@ -156,26 +157,26 @@ export function VerbDriller({ isOpen, onClose, onDrilled }: VerbDrillerProps) {
           {/* Reference table */}
           {!quizMode ? (
             <>
-              <div className="rounded-xl overflow-hidden mb-5" style={{ border: "1px solid rgba(30,26,22,0.12)" }}>
+              <div className="rounded-2xl overflow-hidden mb-5" style={{ border: "2px solid #E5E5E5" }}>
                 <table className="w-full">
                   <thead>
-                    <tr style={{ backgroundColor: "#1E1A16" }}>
-                      <th className="px-4 py-2 text-left text-xs font-bold uppercase tracking-wider" style={{ color: "#F5EFE0", opacity: 0.6 }}>Person</th>
-                      <th className="px-4 py-2 text-left text-xs font-bold uppercase tracking-wider" style={{ color: "#F5EFE0", opacity: 0.6 }}>English</th>
-                      <th className="px-4 py-2 text-left text-xs font-bold uppercase tracking-wider" style={{ color: "#C9922A" }}>Romanian</th>
+                    <tr style={{ backgroundColor: "#F7F7F7" }}>
+                      <th className="px-4 py-2.5 text-left text-xs font-black uppercase tracking-wider" style={{ fontFamily: "Nunito, sans-serif", color: "#AFAFAF" }}>Person</th>
+                      <th className="px-4 py-2.5 text-left text-xs font-black uppercase tracking-wider" style={{ fontFamily: "Nunito, sans-serif", color: "#AFAFAF" }}>English</th>
+                      <th className="px-4 py-2.5 text-left text-xs font-black uppercase tracking-wider" style={{ fontFamily: "Nunito, sans-serif", color: "#1CB0F6" }}>Romanian</th>
                     </tr>
                   </thead>
                   <tbody>
                     {PERSONS.map((person, i) => (
-                      <tr key={person} style={{ backgroundColor: i % 2 === 0 ? "white" : "rgba(30,26,22,0.02)" }}>
+                      <tr key={person} style={{ backgroundColor: i % 2 === 0 ? "white" : "#FAFAFA", borderTop: "1px solid #F0F0F0" }}>
                         <td className="px-4 py-2.5">
-                          <span className="text-sm font-bold" style={{ fontFamily: "IBM Plex Mono, monospace", color: "#8B1A1A" }}>{person}</span>
+                          <span className="text-sm font-black" style={{ fontFamily: "Nunito, sans-serif", color: "#FF4B4B" }}>{person}</span>
                         </td>
-                        <td className="px-4 py-2.5 text-sm" style={{ color: "#1E1A16", opacity: 0.5 }}>
+                        <td className="px-4 py-2.5 text-sm font-bold" style={{ fontFamily: "Nunito, sans-serif", color: "#AFAFAF" }}>
                           {personLabels[person]}
                         </td>
                         <td className="px-4 py-2.5">
-                          <span className="font-bold" style={{ fontFamily: "Fraunces, serif", color: "#1E1A16", fontSize: "15px" }}>
+                          <span className="font-black" style={{ fontFamily: "Nunito, sans-serif", color: "#3C3C3C", fontSize: "15px" }}>
                             {conjugations[person]}
                           </span>
                         </td>
@@ -186,8 +187,8 @@ export function VerbDriller({ isOpen, onClose, onDrilled }: VerbDrillerProps) {
               </div>
               <button
                 onClick={startQuiz}
-                className="w-full py-3 rounded-xl font-semibold text-sm transition-all hover:opacity-90"
-                style={{ backgroundColor: "#8B1A1A", color: "#F5EFE0" }}
+                className="w-full py-3 rounded-2xl font-black text-sm transition-all"
+                style={{ backgroundColor: "#58CC02", color: "white", fontFamily: "Nunito, sans-serif", border: "none", boxShadow: "0 4px 0 #46A302" }}
               >
                 Quiz Me on This Tense
               </button>
@@ -195,15 +196,15 @@ export function VerbDriller({ isOpen, onClose, onDrilled }: VerbDrillerProps) {
           ) : (
             /* Quiz mode */
             <div>
-              <div className="rounded-xl p-5 mb-4 text-center" style={{ backgroundColor: "rgba(139,26,26,0.04)", border: "1px solid rgba(139,26,26,0.12)" }}>
-                <p className="text-xs font-semibold mb-2" style={{ color: "#1E1A16", opacity: 0.5 }}>
+              <div className="rounded-2xl p-5 mb-4 text-center" style={{ backgroundColor: "#F7F7F7", border: "2px solid #E5E5E5" }}>
+                <p className="text-xs font-black mb-2" style={{ fontFamily: "Nunito, sans-serif", color: "#AFAFAF" }}>
                   {quizPersonIdx + 1} of {PERSONS.length} · Score: {quizScore}/{quizTotal}
                 </p>
-                <p className="text-lg mb-1" style={{ color: "#1E1A16", opacity: 0.7 }}>Conjugate in {activeTense}:</p>
-                <p className="text-3xl font-bold" style={{ fontFamily: "Fraunces, serif", color: "#8B1A1A" }}>
+                <p className="text-lg font-bold mb-1" style={{ fontFamily: "Nunito, sans-serif", color: "#AFAFAF" }}>Conjugate in {activeTense}:</p>
+                <p className="text-3xl font-black" style={{ fontFamily: "Nunito, sans-serif", color: "#1CB0F6" }}>
                   {verb.infinitive}
                 </p>
-                <p className="text-sm mt-1" style={{ fontFamily: "IBM Plex Mono, monospace", color: "#1E1A16", opacity: 0.5 }}>
+                <p className="text-sm font-bold mt-1" style={{ fontFamily: "Nunito, sans-serif", color: "#AFAFAF" }}>
                   {quizPerson} — {personLabels[quizPerson]}
                 </p>
               </div>
@@ -214,16 +215,16 @@ export function VerbDriller({ isOpen, onClose, onDrilled }: VerbDrillerProps) {
                 onKeyDown={e => { if (e.key === "Enter") quizSubmitted ? nextQuiz() : submitQuiz(); }}
                 placeholder="Type the conjugated form…"
                 autoFocus
-                className="w-full px-4 py-3 rounded-xl text-lg outline-none transition-all mb-3"
+                className="w-full px-4 py-3 rounded-2xl text-lg outline-none transition-all mb-3 font-bold"
                 style={{
-                  fontFamily: "IBM Plex Mono, monospace",
+                  fontFamily: "Nunito, sans-serif",
                   backgroundColor: quizSubmitted
-                    ? quizInput.trim().toLowerCase() === correctAnswer.toLowerCase() ? "rgba(45,90,39,0.08)" : "rgba(139,26,26,0.06)"
+                    ? quizInput.trim().toLowerCase() === correctAnswer.toLowerCase() ? "#E6F9E8" : "#FFECEC"
                     : "white",
                   border: quizSubmitted
-                    ? `2px solid ${quizInput.trim().toLowerCase() === correctAnswer.toLowerCase() ? "#2D5A27" : "#8B1A1A"}`
-                    : "2px solid rgba(30,26,22,0.15)",
-                  color: "#1E1A16",
+                    ? `2px solid ${quizInput.trim().toLowerCase() === correctAnswer.toLowerCase() ? "#58CC02" : "#FF4B4B"}`
+                    : "2px solid #E5E5E5",
+                  color: "#3C3C3C",
                 }}
               />
 
@@ -235,19 +236,20 @@ export function VerbDriller({ isOpen, onClose, onDrilled }: VerbDrillerProps) {
                     className="mb-3 overflow-hidden"
                   >
                     <div
-                      className="rounded-xl p-3"
+                      className="rounded-2xl p-3"
                       style={{
                         backgroundColor: quizInput.trim().toLowerCase() === correctAnswer.toLowerCase()
-                          ? "rgba(45,90,39,0.08)" : "rgba(139,26,26,0.06)",
+                          ? "#E6F9E8" : "#FFECEC",
+                        border: `2px solid ${quizInput.trim().toLowerCase() === correctAnswer.toLowerCase() ? "#58CC02" : "#FF4B4B"}`,
                       }}
                     >
                       {quizInput.trim().toLowerCase() !== correctAnswer.toLowerCase() && (
-                        <p className="text-sm" style={{ color: "#8B1A1A" }}>
-                          Correct: <span className="font-bold" style={{ fontFamily: "Fraunces, serif" }}>{correctAnswer}</span>
+                        <p className="text-sm font-bold" style={{ fontFamily: "Nunito, sans-serif", color: "#FF4B4B" }}>
+                          Correct: <span className="font-black">{correctAnswer}</span>
                         </p>
                       )}
                       {quizInput.trim().toLowerCase() === correctAnswer.toLowerCase() && (
-                        <p className="text-sm font-bold" style={{ color: "#2D5A27" }}>✓ Correct!</p>
+                        <p className="text-sm font-black" style={{ fontFamily: "Nunito, sans-serif", color: "#58CC02" }}>✓ Correct!</p>
                       )}
                     </div>
                   </motion.div>
@@ -259,24 +261,24 @@ export function VerbDriller({ isOpen, onClose, onDrilled }: VerbDrillerProps) {
                   <button
                     onClick={submitQuiz}
                     disabled={!quizInput.trim()}
-                    className="flex-1 py-3 rounded-xl font-semibold text-sm transition-all hover:opacity-90 disabled:opacity-40"
-                    style={{ backgroundColor: "#8B1A1A", color: "#F5EFE0" }}
+                    className="flex-1 py-3 rounded-2xl font-black text-sm transition-all disabled:opacity-40"
+                    style={{ backgroundColor: "#58CC02", color: "white", fontFamily: "Nunito, sans-serif", boxShadow: "0 4px 0 #46A302" }}
                   >
                     Check
                   </button>
                 ) : (
                   <button
                     onClick={nextQuiz}
-                    className="flex-1 py-3 rounded-xl font-semibold text-sm transition-all hover:opacity-90"
-                    style={{ backgroundColor: "#1E1A16", color: "#F5EFE0" }}
+                    className="flex-1 py-3 rounded-2xl font-black text-sm transition-all"
+                    style={{ backgroundColor: "#1CB0F6", color: "white", fontFamily: "Nunito, sans-serif", boxShadow: "0 4px 0 #0A90D0" }}
                   >
                     {quizPersonIdx + 1 < PERSONS.length ? "Next Person →" : `Done! ${quizScore}/${PERSONS.length} correct`}
                   </button>
                 )}
                 <button
                   onClick={() => setQuizMode(false)}
-                  className="px-4 py-3 rounded-xl border text-sm font-medium transition-all hover:bg-black/5"
-                  style={{ borderColor: "rgba(30,26,22,0.2)", color: "#1E1A16" }}
+                  className="px-4 py-3 rounded-2xl font-bold text-sm transition-all"
+                  style={{ border: "2px solid #E5E5E5", color: "#AFAFAF", fontFamily: "Nunito, sans-serif", boxShadow: "0 4px 0 #E5E5E5" }}
                 >
                   Table
                 </button>

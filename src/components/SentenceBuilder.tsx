@@ -162,26 +162,26 @@ export function SentenceBuilder({ isOpen, onClose }: SentenceBuilderProps) {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       className="fixed inset-0 z-50 flex items-center justify-center p-4"
-      style={{ backgroundColor: "rgba(30,26,22,0.7)", backdropFilter: "blur(4px)" }}
+      style={{ backgroundColor: "rgba(0,0,0,0.5)", backdropFilter: "blur(2px)" }}
       onClick={e => { if (e.target === e.currentTarget) onClose(); }}
     >
       <motion.div
         initial={{ scale: 0.95, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         exit={{ scale: 0.95, opacity: 0 }}
-        className="w-full max-w-2xl rounded-2xl shadow-2xl overflow-hidden"
-        style={{ backgroundColor: "#F5EFE0", border: "1px solid rgba(139,26,26,0.15)" }}
+        className="w-full max-w-2xl rounded-3xl overflow-hidden"
+        style={{ backgroundColor: "#FFFFFF", boxShadow: "0 8px 0 #E5E5E5, 0 0 0 2px #E5E5E5" }}
       >
         {/* Header */}
-        <div className="px-6 py-4 flex items-center justify-between" style={{ borderBottom: "1px solid rgba(30,26,22,0.1)" }}>
+        <div className="px-6 py-5 flex items-center justify-between" style={{ borderBottom: "2px solid #F0F0F0" }}>
           <div>
-            <h2 className="font-bold text-xl" style={{ fontFamily: "Fraunces, serif", color: "#1E1A16" }}>Sentence Builder</h2>
-            <p className="text-xs mt-0.5" style={{ color: "#1E1A16", opacity: 0.5 }}>Tap words to build the correct Romanian sentence</p>
+            <h2 className="font-black text-xl tracking-tight" style={{ fontFamily: "Nunito, sans-serif", color: "#3C3C3C" }}>🧩 Sentence Builder</h2>
+            <p className="text-xs font-bold mt-0.5" style={{ fontFamily: "Nunito, sans-serif", color: "#AFAFAF" }}>Tap words to build the correct Romanian sentence</p>
           </div>
           <div className="flex items-center gap-2">
-            <span className="text-sm font-bold" style={{ color: "#2D5A27" }}>{score}/{challenges.length}</span>
-            <button onClick={onClose} className="p-2 rounded-lg hover:bg-black/5 transition-colors">
-              <X className="w-5 h-5" style={{ color: "#1E1A16" }} />
+            <span className="text-sm font-black" style={{ fontFamily: "Nunito, sans-serif", color: "#58CC02" }}>{score}/{challenges.length}</span>
+            <button onClick={onClose} className="w-9 h-9 flex items-center justify-center rounded-xl transition-colors" style={{ backgroundColor: "#F7F7F7", border: "2px solid #E5E5E5" }}>
+              <X className="w-4 h-4" style={{ color: "#AFAFAF" }} />
             </button>
           </div>
         </div>
@@ -190,29 +190,29 @@ export function SentenceBuilder({ isOpen, onClose }: SentenceBuilderProps) {
           {/* Progress */}
           <div className="flex gap-1.5 mb-5">
             {challenges.map((_, i) => (
-              <div key={i} className="h-1.5 flex-1 rounded-full" style={{ backgroundColor: i < current ? "#8B1A1A" : i === current ? "#C9922A" : "rgba(30,26,22,0.15)" }} />
+              <div key={i} className="h-2 flex-1 rounded-full" style={{ backgroundColor: i < current ? "#58CC02" : i === current ? "#FF9600" : "#F0F0F0" }} />
             ))}
           </div>
 
           {/* English prompt */}
-          <div className="rounded-xl p-4 mb-4" style={{ backgroundColor: "rgba(30,26,22,0.04)", border: "1px solid rgba(30,26,22,0.1)" }}>
-            <p className="text-xs font-semibold uppercase tracking-wider mb-1" style={{ color: "#1E1A16", opacity: 0.4 }}>Translate to Romanian</p>
-            <p className="text-xl font-semibold" style={{ fontFamily: "Fraunces, serif", color: "#1E1A16" }}>
+          <div className="rounded-2xl p-4 mb-4" style={{ backgroundColor: "#F7F7F7", border: "2px solid #E5E5E5" }}>
+            <p className="text-xs font-black uppercase tracking-wider mb-1" style={{ fontFamily: "Nunito, sans-serif", color: "#AFAFAF" }}>Translate to Romanian</p>
+            <p className="text-xl font-black" style={{ fontFamily: "Nunito, sans-serif", color: "#3C3C3C" }}>
               "{challenge.english}"
             </p>
-            <p className="text-xs mt-1" style={{ color: "#1E1A16", opacity: 0.4 }}>Hint: {challenge.hint}</p>
+            <p className="text-xs mt-1 font-bold" style={{ fontFamily: "Nunito, sans-serif", color: "#AFAFAF" }}>Hint: {challenge.hint}</p>
           </div>
 
           {/* Construction area */}
           <div
-            className="min-h-[64px] rounded-xl p-3 mb-4 flex flex-wrap gap-2 items-center"
+            className="min-h-[64px] rounded-2xl p-3 mb-4 flex flex-wrap gap-2 items-center"
             style={{
-              backgroundColor: submitted ? (correct ? "rgba(45,90,39,0.06)" : "rgba(139,26,26,0.06)") : "white",
-              border: submitted ? `2px solid ${correct ? "#2D5A27" : "#8B1A1A"}` : "2px dashed rgba(30,26,22,0.2)",
+              backgroundColor: submitted ? (correct ? "#E6F9E8" : "#FFECEC") : "white",
+              border: submitted ? `2px solid ${correct ? "#58CC02" : "#FF4B4B"}` : "2px dashed #E5E5E5",
             }}
           >
             {selectedWords.length === 0 ? (
-              <span className="text-sm" style={{ color: "#1E1A16", opacity: 0.3 }}>Tap words below to build the sentence…</span>
+              <span className="text-sm font-bold" style={{ fontFamily: "Nunito, sans-serif", color: "#AFAFAF" }}>Tap words below to build the sentence…</span>
             ) : (
               selectedWords.map(word => {
                 const rc = roleColors[word.role] || roleColors.distractor;
@@ -223,8 +223,8 @@ export function SentenceBuilder({ isOpen, onClose }: SentenceBuilderProps) {
                     initial={{ scale: 0.8 }}
                     animate={{ scale: 1 }}
                     onClick={() => toggleWord(word.id)}
-                    className="px-3 py-1.5 rounded-full font-semibold text-sm transition-all hover:opacity-80"
-                    style={{ backgroundColor: rc.bg, color: rc.color, border: `1.5px solid ${rc.color}` }}
+                    className="px-3 py-1.5 rounded-full font-black text-sm transition-all"
+                    style={{ backgroundColor: rc.bg, color: rc.color, border: `2px solid ${rc.color}`, fontFamily: "Nunito, sans-serif" }}
                   >
                     {word.text}
                   </motion.button>
@@ -236,17 +236,18 @@ export function SentenceBuilder({ isOpen, onClose }: SentenceBuilderProps) {
           {/* Word bank */}
           <div className="flex flex-wrap gap-2 mb-4">
             {wordOrder.filter(w => !selected.includes(w.id)).map(word => {
-              const rc = roleColors[word.role] || roleColors.distractor;
               return (
                 <motion.button
                   key={word.id}
                   layout
                   onClick={() => toggleWord(word.id)}
-                  className="px-3 py-1.5 rounded-full font-semibold text-sm transition-all hover:opacity-80 border"
+                  className="px-3 py-1.5 rounded-full font-black text-sm transition-all border-2"
                   style={{
                     backgroundColor: "white",
-                    color: "#1E1A16",
-                    borderColor: "rgba(30,26,22,0.2)",
+                    color: "#3C3C3C",
+                    borderColor: "#E5E5E5",
+                    fontFamily: "Nunito, sans-serif",
+                    boxShadow: "0 3px 0 #E5E5E5",
                   }}
                 >
                   {word.text}
@@ -261,48 +262,48 @@ export function SentenceBuilder({ isOpen, onClose }: SentenceBuilderProps) {
               <motion.div
                 initial={{ opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="rounded-xl p-4 mb-4"
+                className="rounded-2xl p-4 mb-4"
                 style={{
-                  backgroundColor: correct ? "rgba(45,90,39,0.08)" : "rgba(139,26,26,0.06)",
-                  border: `1px solid ${correct ? "rgba(45,90,39,0.2)" : "rgba(139,26,26,0.2)"}`,
+                  backgroundColor: correct ? "#E6F9E8" : "#FFECEC",
+                  border: `2px solid ${correct ? "#58CC02" : "#FF4B4B"}`,
                 }}
               >
                 {correct
-                  ? <p className="text-sm font-bold mb-1" style={{ color: "#2D5A27" }}>✓ Correct sentence!</p>
+                  ? <p className="text-sm font-black mb-1" style={{ fontFamily: "Nunito, sans-serif", color: "#58CC02" }}>✓ Correct sentence!</p>
                   : (
                     <div>
-                      <p className="text-sm font-bold mb-1" style={{ color: "#8B1A1A" }}>
+                      <p className="text-sm font-black mb-1" style={{ fontFamily: "Nunito, sans-serif", color: "#FF4B4B" }}>
                         Correct order:{" "}
-                        <span style={{ fontFamily: "Fraunces, serif" }}>
+                        <span>
                           {challenge.correct.map(id => challenge.words.find(w => w.id === id)?.text).join(" ")}
                         </span>
                       </p>
                     </div>
                   )}
-                <p className="text-sm" style={{ color: "#1E1A16", opacity: 0.7 }}>{challenge.explanation}</p>
+                <p className="text-sm font-bold" style={{ fontFamily: "Nunito, sans-serif", color: "#AFAFAF" }}>{challenge.explanation}</p>
               </motion.div>
             )}
           </AnimatePresence>
 
           {/* Actions */}
           <div className="flex gap-2">
-            <button onClick={reset} className="p-3 rounded-xl border transition-all hover:bg-black/5" style={{ borderColor: "rgba(30,26,22,0.2)" }}>
-              <Shuffle className="w-5 h-5" style={{ color: "#1E1A16" }} />
+            <button onClick={reset} className="p-3 rounded-xl transition-all" style={{ border: "2px solid #E5E5E5", boxShadow: "0 3px 0 #E5E5E5" }}>
+              <Shuffle className="w-5 h-5" style={{ color: "#AFAFAF" }} />
             </button>
             {!submitted ? (
               <button
                 onClick={checkAnswer}
                 disabled={selected.length === 0}
-                className="flex-1 py-3 rounded-xl font-semibold text-sm transition-all hover:opacity-90 disabled:opacity-40 flex items-center justify-center gap-2"
-                style={{ backgroundColor: "#8B1A1A", color: "#F5EFE0" }}
+                className="flex-1 py-3 rounded-2xl font-black text-sm transition-all disabled:opacity-40 flex items-center justify-center gap-2"
+                style={{ backgroundColor: "#58CC02", color: "white", fontFamily: "Nunito, sans-serif", boxShadow: "0 4px 0 #46A302" }}
               >
                 <Check className="w-4 h-4" /> Check Sentence
               </button>
             ) : (
               <button
                 onClick={nextChallenge}
-                className="flex-1 py-3 rounded-xl font-semibold text-sm transition-all hover:opacity-90 flex items-center justify-center gap-2"
-                style={{ backgroundColor: "#1E1A16", color: "#F5EFE0" }}
+                className="flex-1 py-3 rounded-2xl font-black text-sm transition-all flex items-center justify-center gap-2"
+                style={{ backgroundColor: "#1CB0F6", color: "white", fontFamily: "Nunito, sans-serif", boxShadow: "0 4px 0 #0A90D0" }}
               >
                 Next <ChevronRight className="w-4 h-4" />
               </button>

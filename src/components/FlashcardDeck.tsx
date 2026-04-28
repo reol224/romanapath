@@ -73,26 +73,26 @@ export function FlashcardDeck({ isOpen, onClose, onCardReviewed }: FlashcardDeck
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       className="fixed inset-0 z-50 flex items-center justify-center p-4"
-      style={{ backgroundColor: "rgba(30,26,22,0.7)", backdropFilter: "blur(4px)" }}
+      style={{ backgroundColor: "rgba(0,0,0,0.5)", backdropFilter: "blur(2px)" }}
       onClick={e => { if (e.target === e.currentTarget) onClose(); }}
     >
       <motion.div
         initial={{ scale: 0.95, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         exit={{ scale: 0.95, opacity: 0 }}
-        className="w-full max-w-lg rounded-2xl shadow-2xl overflow-hidden"
-        style={{ backgroundColor: "#F5EFE0", border: "1px solid rgba(139,26,26,0.15)" }}
+        className="w-full max-w-lg rounded-3xl overflow-hidden"
+        style={{ backgroundColor: "#FFFFFF", boxShadow: "0 8px 0 #E5E5E5, 0 0 0 2px #E5E5E5" }}
       >
         {/* Header */}
-        <div className="px-6 py-4 flex items-center justify-between" style={{ borderBottom: "1px solid rgba(30,26,22,0.1)" }}>
+        <div className="px-6 py-5 flex items-center justify-between" style={{ borderBottom: "2px solid #F0F0F0" }}>
           <div>
-            <h2 className="font-bold text-xl" style={{ fontFamily: "Fraunces, serif", color: "#1E1A16" }}>Flashcard Deck</h2>
-            <p className="text-xs mt-0.5" style={{ color: "#1E1A16", opacity: 0.5 }}>
+            <h2 className="font-black text-xl tracking-tight" style={{ fontFamily: "Nunito, sans-serif", color: "#3C3C3C" }}>🃏 Flashcard Deck</h2>
+            <p className="text-xs font-bold mt-0.5" style={{ fontFamily: "Nunito, sans-serif", color: "#AFAFAF" }}>
               Spaced repetition vocabulary practice
             </p>
           </div>
-          <button onClick={onClose} className="p-2 rounded-lg hover:bg-black/5 transition-colors">
-            <X className="w-5 h-5" style={{ color: "#1E1A16" }} />
+          <button onClick={onClose} className="w-9 h-9 flex items-center justify-center rounded-xl transition-colors" style={{ backgroundColor: "#F7F7F7", border: "2px solid #E5E5E5" }}>
+            <X className="w-4 h-4" style={{ color: "#AFAFAF" }} />
           </button>
         </div>
 
@@ -104,11 +104,13 @@ export function FlashcardDeck({ isOpen, onClose, onCardReviewed }: FlashcardDeck
                 <button
                   key={lvl}
                   onClick={() => { setLevelFilter(lvl); setCurrentIdx(0); setFlipped(false); }}
-                  className="px-2.5 py-1 rounded-full text-xs font-semibold transition-all border"
+                  className="px-2.5 py-1 rounded-full text-xs font-black transition-all border-2"
                   style={{
-                    backgroundColor: levelFilter === lvl ? "#8B1A1A" : "transparent",
-                    color: levelFilter === lvl ? "#F5EFE0" : "#8B1A1A",
-                    borderColor: "#8B1A1A",
+                    backgroundColor: levelFilter === lvl ? "#FF4B4B" : "white",
+                    color: levelFilter === lvl ? "white" : "#AFAFAF",
+                    borderColor: levelFilter === lvl ? "#FF4B4B" : "#E5E5E5",
+                    fontFamily: "Nunito, sans-serif",
+                    boxShadow: levelFilter === lvl ? "0 3px 0 #CC2A2A" : "0 3px 0 #E5E5E5",
                   }}
                 >
                   {lvl}
@@ -117,8 +119,8 @@ export function FlashcardDeck({ isOpen, onClose, onCardReviewed }: FlashcardDeck
             </div>
             <button
               onClick={() => { setMode(m => m === "ro-en" ? "en-ro" : "ro-en"); setFlipped(false); }}
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold border transition-all hover:bg-black/5"
-              style={{ borderColor: "rgba(30,26,22,0.2)", color: "#1E1A16" }}
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-black border-2 transition-all"
+              style={{ borderColor: "#E5E5E5", color: "#AFAFAF", fontFamily: "Nunito, sans-serif", boxShadow: "0 3px 0 #E5E5E5" }}
             >
               <SwitchCamera className="w-3.5 h-3.5" />
               {mode === "ro-en" ? "RO → EN" : "EN → RO"}
@@ -127,14 +129,14 @@ export function FlashcardDeck({ isOpen, onClose, onCardReviewed }: FlashcardDeck
 
           {/* Progress bar */}
           <div className="mb-5">
-            <div className="flex justify-between text-xs mb-1" style={{ color: "#1E1A16", opacity: 0.5 }}>
+            <div className="flex justify-between text-xs mb-1 font-bold" style={{ fontFamily: "Nunito, sans-serif", color: "#AFAFAF" }}>
               <span>{currentIdx + 1} / {filtered.length}</span>
               <span>{knownIds.size} known · {reviewedIds.size - knownIds.size} learning</span>
             </div>
-            <div className="h-1.5 rounded-full overflow-hidden" style={{ backgroundColor: "rgba(30,26,22,0.1)" }}>
+            <div className="h-2 rounded-full overflow-hidden" style={{ backgroundColor: "#F0F0F0" }}>
               <motion.div
                 className="h-full rounded-full"
-                style={{ backgroundColor: "#8B1A1A" }}
+                style={{ backgroundColor: "#58CC02" }}
                 animate={{ width: `${progress}%` }}
                 transition={{ duration: 0.4 }}
               />
@@ -155,61 +157,62 @@ export function FlashcardDeck({ isOpen, onClose, onCardReviewed }: FlashcardDeck
                 className="rounded-2xl p-8 min-h-[180px] flex flex-col items-center justify-center text-center"
                 style={{
                   backgroundColor: "white",
-                  boxShadow: "0 4px 20px rgba(30,26,22,0.1)",
-                  border: "2px solid rgba(139,26,26,0.12)",
+                  border: "2px solid #E5E5E5",
+                  boxShadow: "0 6px 0 #E5E5E5",
                   backfaceVisibility: "hidden",
                 }}
               >
-                <span className="text-xs font-semibold mb-3 px-2 py-0.5 rounded" style={{ backgroundColor: "#F5EFE0", color: "#8B1A1A" }}>
+                <span className="text-xs font-black mb-3 px-3 py-1 rounded-full" style={{ fontFamily: "Nunito, sans-serif", backgroundColor: "#F0F0F0", color: "#AFAFAF" }}>
                   {mode === "ro-en" ? "Romanian" : "English"} · {card.category}
                 </span>
-                <p className="text-3xl font-bold" style={{ fontFamily: "Fraunces, serif", color: "#1E1A16" }}>
+                <p className="text-3xl font-black" style={{ fontFamily: "Nunito, sans-serif", color: "#3C3C3C" }}>
                   {frontText}
                 </p>
-                <p className="text-xs mt-4 opacity-40" style={{ color: "#1E1A16" }}>Tap to reveal</p>
+                <p className="text-xs mt-4 font-bold" style={{ fontFamily: "Nunito, sans-serif", color: "#AFAFAF" }}>Tap to reveal</p>
               </div>
 
               {/* Back */}
               <div
                 className="absolute inset-0 rounded-2xl p-8 min-h-[180px] flex flex-col items-center justify-center text-center"
                 style={{
-                  backgroundColor: "#1E1A16",
-                  boxShadow: "0 4px 20px rgba(30,26,22,0.2)",
+                  backgroundColor: "#1CB0F6",
+                  border: "2px solid #0A90D0",
+                  boxShadow: "0 6px 0 #0A90D0",
                   backfaceVisibility: "hidden",
                   transform: "rotateY(180deg)",
                 }}
               >
-                <p className="text-3xl font-bold mb-2" style={{ fontFamily: "Fraunces, serif", color: "#F5EFE0" }}>
+                <p className="text-3xl font-black mb-2" style={{ fontFamily: "Nunito, sans-serif", color: "white" }}>
                   {backText}
                 </p>
                 {backPhonetic && (
-                  <p className="text-sm" style={{ fontFamily: "IBM Plex Mono, monospace", color: "#C9922A" }}>
+                  <p className="text-sm font-bold" style={{ fontFamily: "Nunito, sans-serif", color: "rgba(255,255,255,0.8)" }}>
                     {backPhonetic}
                   </p>
                 )}
-                <p className="text-xs mt-3 opacity-40" style={{ color: "#F5EFE0" }}>Level {card.level} · {card.category}</p>
+                <p className="text-xs mt-3 font-bold" style={{ fontFamily: "Nunito, sans-serif", color: "rgba(255,255,255,0.6)" }}>Level {card.level} · {card.category}</p>
               </div>
             </motion.div>
           </div>
 
           {/* Navigation */}
           <div className="flex gap-2">
-            <button onClick={prev} className="p-3 rounded-xl border transition-all hover:bg-black/5" style={{ borderColor: "rgba(30,26,22,0.2)" }}>
-              <ChevronLeft className="w-5 h-5" style={{ color: "#1E1A16" }} />
+            <button onClick={prev} className="p-3 rounded-xl transition-all" style={{ border: "2px solid #E5E5E5", boxShadow: "0 3px 0 #E5E5E5" }}>
+              <ChevronLeft className="w-5 h-5" style={{ color: "#AFAFAF" }} />
             </button>
             {flipped ? (
               <>
                 <button
                   onClick={() => advance("right", false)}
-                  className="flex-1 py-3 rounded-xl font-semibold text-sm transition-all hover:opacity-90 border-2"
-                  style={{ borderColor: "#C9922A", color: "#C9922A" }}
+                  className="flex-1 py-3 rounded-2xl font-black text-sm transition-all border-2"
+                  style={{ borderColor: "#FF9600", color: "#FF9600", fontFamily: "Nunito, sans-serif", boxShadow: "0 4px 0 #CC7700" }}
                 >
                   Still Learning
                 </button>
                 <button
                   onClick={() => advance("right", true)}
-                  className="flex-1 py-3 rounded-xl font-semibold text-sm transition-all hover:opacity-90 flex items-center justify-center gap-1.5"
-                  style={{ backgroundColor: "#2D5A27", color: "#F5EFE0" }}
+                  className="flex-1 py-3 rounded-2xl font-black text-sm transition-all flex items-center justify-center gap-1.5"
+                  style={{ backgroundColor: "#58CC02", color: "white", fontFamily: "Nunito, sans-serif", boxShadow: "0 4px 0 #46A302" }}
                 >
                   <Check className="w-4 h-4" /> I Know This
                 </button>
@@ -217,18 +220,18 @@ export function FlashcardDeck({ isOpen, onClose, onCardReviewed }: FlashcardDeck
             ) : (
               <button
                 onClick={handleFlip}
-                className="flex-1 py-3 rounded-xl font-semibold text-sm transition-all hover:opacity-90"
-                style={{ backgroundColor: "#8B1A1A", color: "#F5EFE0" }}
+                className="flex-1 py-3 rounded-2xl font-black text-sm transition-all"
+                style={{ backgroundColor: "#1CB0F6", color: "white", fontFamily: "Nunito, sans-serif", boxShadow: "0 4px 0 #0A90D0" }}
               >
                 Reveal Answer
               </button>
             )}
-            <button onClick={prev} className="p-3 rounded-xl border transition-all hover:bg-black/5" style={{ borderColor: "rgba(30,26,22,0.2)" }}>
-              <ChevronRight className="w-5 h-5" style={{ color: "#1E1A16" }} />
+            <button onClick={prev} className="p-3 rounded-xl transition-all" style={{ border: "2px solid #E5E5E5", boxShadow: "0 3px 0 #E5E5E5" }}>
+              <ChevronRight className="w-5 h-5" style={{ color: "#AFAFAF" }} />
             </button>
           </div>
 
-          <button onClick={reset} className="w-full mt-3 flex items-center justify-center gap-1.5 py-2 text-xs opacity-40 hover:opacity-70 transition-opacity" style={{ color: "#1E1A16" }}>
+          <button onClick={reset} className="w-full mt-3 flex items-center justify-center gap-1.5 py-2 text-xs font-bold transition-opacity hover:opacity-70" style={{ fontFamily: "Nunito, sans-serif", color: "#AFAFAF" }}>
             <RotateCcw className="w-3.5 h-3.5" /> Reset deck
           </button>
         </div>

@@ -9,9 +9,9 @@ interface TongueTwisterModuleProps {
 }
 
 const difficultyConfig = {
-  easy: { label: "Easy", color: "#2D5A27", bg: "#E8F5E3" },
-  medium: { label: "Medium", color: "#C9922A", bg: "#FFF3DC" },
-  hard: { label: "Hard", color: "#8B1A1A", bg: "#F9E8E8" },
+  easy: { label: "Easy", color: "#58CC02", bg: "#E6F9E8", shadow: "#46A302" },
+  medium: { label: "Medium", color: "#FF9600", bg: "#FFF3DC", shadow: "#CC7700" },
+  hard: { label: "Hard", color: "#FF4B4B", bg: "#FFECEC", shadow: "#CC2A2A" },
 };
 
 export function TongueTwisterModule({ isOpen, onClose }: TongueTwisterModuleProps) {
@@ -72,28 +72,28 @@ export function TongueTwisterModule({ isOpen, onClose }: TongueTwisterModuleProp
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       className="fixed inset-0 z-50 flex items-center justify-center p-4"
-      style={{ backgroundColor: "rgba(30,26,22,0.7)", backdropFilter: "blur(4px)" }}
+      style={{ backgroundColor: "rgba(0,0,0,0.5)", backdropFilter: "blur(2px)" }}
       onClick={e => { if (e.target === e.currentTarget) onClose(); }}
     >
       <motion.div
         initial={{ scale: 0.95, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         exit={{ scale: 0.95, opacity: 0 }}
-        className="w-full max-w-2xl rounded-2xl shadow-2xl overflow-hidden"
-        style={{ backgroundColor: "#F5EFE0", border: "1px solid rgba(139,26,26,0.15)" }}
+        className="w-full max-w-2xl rounded-3xl overflow-hidden"
+        style={{ backgroundColor: "#FFFFFF", boxShadow: "0 8px 0 #E5E5E5, 0 0 0 2px #E5E5E5" }}
       >
         {/* Header */}
-        <div className="px-6 py-4 flex items-center justify-between" style={{ borderBottom: "1px solid rgba(30,26,22,0.1)" }}>
+        <div className="px-6 py-5 flex items-center justify-between" style={{ borderBottom: "2px solid #F0F0F0" }}>
           <div>
-            <h2 className="font-bold text-xl" style={{ fontFamily: "Fraunces, serif", color: "#1E1A16" }}>
-              Tongue Twisters
+            <h2 className="font-black text-xl tracking-tight" style={{ fontFamily: "Nunito, sans-serif", color: "#3C3C3C" }}>
+              👅 Tongue Twisters
             </h2>
-            <p className="text-sm mt-0.5" style={{ color: "#1E1A16", opacity: 0.55 }}>
+            <p className="text-sm font-bold mt-0.5" style={{ fontFamily: "Nunito, sans-serif", color: "#AFAFAF" }}>
               Drill difficult Romanian sounds with speed
             </p>
           </div>
-          <button onClick={onClose} className="p-2 rounded-lg hover:bg-black/5 transition-colors">
-            <X className="w-5 h-5" style={{ color: "#1E1A16" }} />
+          <button onClick={onClose} className="w-9 h-9 flex items-center justify-center rounded-xl transition-colors" style={{ backgroundColor: "#F7F7F7", border: "2px solid #E5E5E5" }}>
+            <X className="w-4 h-4" style={{ color: "#AFAFAF" }} />
           </button>
         </div>
 
@@ -106,11 +106,13 @@ export function TongueTwisterModule({ isOpen, onClose }: TongueTwisterModuleProp
               <button
                 key={tt.id}
                 onClick={() => setCurrent(i)}
-                className="px-3 py-1.5 rounded-full text-xs font-semibold transition-all border"
+                className="px-3 py-1.5 rounded-full text-xs font-black transition-all border-2"
                 style={{
-                  backgroundColor: current === i ? cfg.color : cfg.bg,
-                  color: current === i ? "#F5EFE0" : cfg.color,
+                  backgroundColor: current === i ? cfg.color : "white",
+                  color: current === i ? "white" : cfg.color,
                   borderColor: cfg.color,
+                  fontFamily: "Nunito, sans-serif",
+                  boxShadow: current === i ? `0 3px 0 ${cfg.shadow}` : "0 3px 0 #E5E5E5",
                   opacity: isDone && current !== i ? 0.7 : 1,
                 }}
               >
@@ -122,36 +124,38 @@ export function TongueTwisterModule({ isOpen, onClose }: TongueTwisterModuleProp
 
         {/* Main card */}
         <div className="p-6">
-          <div className="rounded-xl p-5 mb-4" style={{ backgroundColor: "rgba(139,26,26,0.04)", border: "1px solid rgba(139,26,26,0.12)" }}>
+          <div className="rounded-2xl p-5 mb-4" style={{ backgroundColor: "#F7F7F7", border: "2px solid #E5E5E5" }}>
             <div className="flex items-start justify-between mb-3">
               <div className="flex items-center gap-2">
                 <span
-                  className="px-2 py-0.5 rounded-full text-xs font-bold"
+                  className="px-2 py-0.5 rounded-full text-xs font-black border-2"
                   style={{
                     backgroundColor: difficultyConfig[twister.difficulty].bg,
                     color: difficultyConfig[twister.difficulty].color,
+                    borderColor: difficultyConfig[twister.difficulty].color,
+                    fontFamily: "Nunito, sans-serif",
                   }}
                 >
                   {difficultyConfig[twister.difficulty].label}
                 </span>
-                <span className="text-xs font-mono px-2 py-0.5 rounded" style={{ backgroundColor: "rgba(30,26,22,0.07)", color: "#8B1A1A" }}>
+                <span className="text-xs font-black px-2 py-0.5 rounded-xl border-2" style={{ fontFamily: "Nunito, sans-serif", backgroundColor: "white", borderColor: "#E5E5E5", color: "#FF4B4B" }}>
                   Focus: {twister.focusSound}
                 </span>
               </div>
               {completed.has(current) && (
-                <CheckCircle2 className="w-5 h-5" style={{ color: "#2D5A27" }} />
+                <CheckCircle2 className="w-5 h-5" style={{ color: "#58CC02" }} />
               )}
             </div>
 
             {/* Word-by-word highlighted text */}
-            <p className="text-2xl leading-relaxed mb-3" style={{ fontFamily: "Fraunces, serif", color: "#1E1A16" }}>
+            <p className="text-2xl leading-relaxed mb-3 font-black" style={{ fontFamily: "Nunito, sans-serif", color: "#3C3C3C" }}>
               {words.map((word, i) => (
                 <span
                   key={i}
                   className="transition-all duration-150"
                   style={{
-                    color: highlightIdx === i ? "#8B1A1A" : "#1E1A16",
-                    fontWeight: highlightIdx === i ? 700 : 400,
+                    color: highlightIdx === i ? "#1CB0F6" : "#3C3C3C",
+                    fontWeight: highlightIdx === i ? 900 : 700,
                     textDecoration: highlightIdx === i ? "underline" : "none",
                   }}
                 >
@@ -168,10 +172,10 @@ export function TongueTwisterModule({ isOpen, onClose }: TongueTwisterModuleProp
                   exit={{ opacity: 0, height: 0 }}
                   className="overflow-hidden"
                 >
-                  <p className="text-sm mb-1" style={{ fontFamily: "IBM Plex Mono, monospace", color: "#8B1A1A" }}>
+                  <p className="text-sm mb-1 font-bold" style={{ fontFamily: "Nunito, sans-serif", color: "#1CB0F6" }}>
                     {twister.phonetic}
                   </p>
-                  <p className="text-sm italic" style={{ color: "#1E1A16", opacity: 0.6 }}>
+                  <p className="text-sm font-bold italic" style={{ fontFamily: "Nunito, sans-serif", color: "#AFAFAF" }}>
                     {twister.english}
                   </p>
                 </motion.div>
@@ -180,8 +184,8 @@ export function TongueTwisterModule({ isOpen, onClose }: TongueTwisterModuleProp
 
             <button
               onClick={() => setShowPhonetic(s => !s)}
-              className="text-xs mt-2 underline transition-opacity hover:opacity-70"
-              style={{ color: "#8B1A1A" }}
+              className="text-xs mt-2 font-black underline transition-opacity hover:opacity-70"
+              style={{ fontFamily: "Nunito, sans-serif", color: "#1CB0F6" }}
             >
               {showPhonetic ? "Hide" : "Show"} phonetics & translation
             </button>
@@ -189,16 +193,18 @@ export function TongueTwisterModule({ isOpen, onClose }: TongueTwisterModuleProp
 
           {/* Speed controls */}
           <div className="flex items-center gap-3 mb-4">
-            <span className="text-sm font-medium" style={{ color: "#1E1A16", opacity: 0.7 }}>Speed:</span>
+            <span className="text-sm font-black" style={{ fontFamily: "Nunito, sans-serif", color: "#AFAFAF" }}>Speed:</span>
             {(["slow", "normal", "fast"] as const).map(s => (
               <button
                 key={s}
                 onClick={() => setSpeed(s)}
-                className="px-3 py-1 rounded-full text-xs font-semibold border transition-all capitalize"
+                className="px-3 py-1 rounded-full text-xs font-black border-2 transition-all capitalize"
                 style={{
-                  backgroundColor: speed === s ? "#8B1A1A" : "transparent",
-                  color: speed === s ? "#F5EFE0" : "#8B1A1A",
-                  borderColor: "#8B1A1A",
+                  backgroundColor: speed === s ? "#FF9600" : "white",
+                  color: speed === s ? "white" : "#AFAFAF",
+                  borderColor: speed === s ? "#FF9600" : "#E5E5E5",
+                  fontFamily: "Nunito, sans-serif",
+                  boxShadow: speed === s ? "0 3px 0 #CC7700" : "0 3px 0 #E5E5E5",
                 }}
               >
                 {s === "slow" ? "🐢 Slow" : s === "normal" ? "🚶 Normal" : "⚡ Fast"}
@@ -211,8 +217,8 @@ export function TongueTwisterModule({ isOpen, onClose }: TongueTwisterModuleProp
             {!isPlaying ? (
               <button
                 onClick={startPractice}
-                className="flex-1 flex items-center justify-center gap-2 py-3 rounded-xl font-semibold text-sm transition-all hover:opacity-90"
-                style={{ backgroundColor: "#8B1A1A", color: "#F5EFE0" }}
+                className="flex-1 flex items-center justify-center gap-2 py-3 rounded-2xl font-black text-sm transition-all"
+                style={{ backgroundColor: "#58CC02", color: "white", fontFamily: "Nunito, sans-serif", boxShadow: "0 4px 0 #46A302" }}
               >
                 <Volume2 className="w-4 h-4" />
                 Practice Now
@@ -220,8 +226,8 @@ export function TongueTwisterModule({ isOpen, onClose }: TongueTwisterModuleProp
             ) : (
               <button
                 onClick={stopPractice}
-                className="flex-1 flex items-center justify-center gap-2 py-3 rounded-xl font-semibold text-sm transition-all hover:opacity-90"
-                style={{ backgroundColor: "#1E1A16", color: "#F5EFE0" }}
+                className="flex-1 flex items-center justify-center gap-2 py-3 rounded-2xl font-black text-sm transition-all"
+                style={{ backgroundColor: "#FF4B4B", color: "white", fontFamily: "Nunito, sans-serif", boxShadow: "0 4px 0 #CC2A2A" }}
               >
                 <RefreshCw className="w-4 h-4" />
                 Stop
@@ -229,15 +235,15 @@ export function TongueTwisterModule({ isOpen, onClose }: TongueTwisterModuleProp
             )}
             <button
               onClick={() => setCurrent(c => (c + 1) % tongueTwisters.length)}
-              className="px-4 py-3 rounded-xl border font-semibold text-sm flex items-center gap-1 transition-all hover:bg-black/5"
-              style={{ borderColor: "#8B1A1A", color: "#8B1A1A" }}
+              className="px-4 py-3 rounded-2xl border-2 font-black text-sm flex items-center gap-1 transition-all"
+              style={{ borderColor: "#1CB0F6", color: "#1CB0F6", fontFamily: "Nunito, sans-serif", boxShadow: "0 4px 0 #0A90D0" }}
             >
               Next <ChevronRight className="w-4 h-4" />
             </button>
           </div>
 
           {attempts[current] > 0 && (
-            <p className="text-center text-xs mt-3" style={{ color: "#1E1A16", opacity: 0.5 }}>
+            <p className="text-center text-xs mt-3 font-bold" style={{ fontFamily: "Nunito, sans-serif", color: "#AFAFAF" }}>
               Practiced {attempts[current]}× today
             </p>
           )}

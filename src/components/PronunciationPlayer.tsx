@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Play, Pause, Volume2 } from "lucide-react";
+import { Play, Pause } from "lucide-react";
 
 interface PronunciationPlayerProps {
   text: string;
@@ -18,7 +18,6 @@ export function PronunciationPlayer({ text, phonetic, size = "md" }: Pronunciati
       return;
     }
     setIsPlaying(true);
-    // Simulate audio playback duration
     const duration = speed === 0.75 ? 2000 : 1500;
     setTimeout(() => setIsPlaying(false), duration);
   };
@@ -27,23 +26,24 @@ export function PronunciationPlayer({ text, phonetic, size = "md" }: Pronunciati
 
   return (
     <div
-      className={`inline-flex items-center gap-3 bg-[#8B1A1A]/5 border border-[#8B1A1A]/15 rounded-xl transition-all ${
+      className={`inline-flex items-center gap-3 bg-[#C5EEFF] border-2 border-[#1CB0F6]/40 rounded-2xl transition-all ${
         size === "sm" ? "px-3 py-2" : "px-4 py-3"
       }`}
     >
       {/* Play button */}
       <button
         onClick={handlePlay}
-        className={`shrink-0 rounded-full flex items-center justify-center transition-all duration-200 ${
+        className={`shrink-0 rounded-xl flex items-center justify-center transition-all duration-200 ${
           isPlaying
-            ? "bg-[#8B1A1A] shadow-lg scale-105"
-            : "bg-[#8B1A1A]/15 hover:bg-[#8B1A1A] hover:text-white group"
+            ? "bg-[#1CB0F6] scale-105"
+            : "bg-white border-2 border-[#1CB0F6]/40 hover:bg-[#1CB0F6] group"
         } ${size === "sm" ? "w-7 h-7" : "w-9 h-9"}`}
+        style={isPlaying ? { boxShadow: "0 3px 0 #0A92D0" } : { boxShadow: "0 3px 0 #1CB0F666" }}
       >
         {isPlaying ? (
           <Pause className={`text-white ${size === "sm" ? "w-3 h-3" : "w-4 h-4"}`} />
         ) : (
-          <Play className={`text-[#8B1A1A] group-hover:text-white ${size === "sm" ? "w-3 h-3" : "w-4 h-4"}`} />
+          <Play className={`text-[#1CB0F6] group-hover:text-white ${size === "sm" ? "w-3 h-3" : "w-4 h-4"}`} />
         )}
       </button>
 
@@ -52,15 +52,15 @@ export function PronunciationPlayer({ text, phonetic, size = "md" }: Pronunciati
         {bars.map((height, i) => (
           <motion.div
             key={i}
-            className="w-0.5 rounded-full bg-[#8B1A1A]"
+            className="w-0.5 rounded-full bg-[#1CB0F6]"
             style={{ originY: 0.5 }}
             animate={
               isPlaying
                 ? {
                     scaleY: [1, height / 5, 1, height / 7, 1],
-                    opacity: [0.4, 0.9, 0.5, 1, 0.4],
+                    opacity: [0.5, 1, 0.6, 1, 0.5],
                   }
-                : { scaleY: height / 10, opacity: 0.25 }
+                : { scaleY: height / 10, opacity: 0.4 }
             }
             transition={
               isPlaying
@@ -80,16 +80,14 @@ export function PronunciationPlayer({ text, phonetic, size = "md" }: Pronunciati
       {/* Text and phonetic */}
       <div className="min-w-0">
         <span
-          className={`font-semibold text-[#1E1A16] block leading-none ${
+          className={`font-black text-gray-800 block leading-none ${
             size === "sm" ? "text-xs" : "text-sm"
           }`}
         >
           {text}
         </span>
         <span
-          className={`text-[#8B1A1A]/70 mt-0.5 block leading-none ${
-            size === "sm" ? "text-xs" : "text-xs"
-          }`}
+          className="text-[#0077b6] mt-0.5 block leading-none text-xs font-bold"
           style={{ fontFamily: "'IBM Plex Mono', 'Courier New', monospace" }}
         >
           {phonetic}
@@ -99,11 +97,12 @@ export function PronunciationPlayer({ text, phonetic, size = "md" }: Pronunciati
       {/* Speed toggle */}
       <button
         onClick={() => setSpeed(s => s === 1 ? 0.75 : 1)}
-        className={`shrink-0 text-xs font-mono px-1.5 py-0.5 rounded border transition-colors ${
+        className="shrink-0 text-xs font-black px-2 py-1 rounded-xl border-2 transition-all"
+        style={
           speed === 0.75
-            ? "bg-[#8B1A1A]/10 border-[#8B1A1A]/30 text-[#8B1A1A] font-bold"
-            : "border-[#1E1A16]/15 text-[#1E1A16]/40 hover:border-[#8B1A1A]/30 hover:text-[#8B1A1A]"
-        }`}
+            ? { backgroundColor: "#1CB0F6", borderColor: "#0A92D0", color: "white", boxShadow: "0 2px 0 #0A92D0" }
+            : { backgroundColor: "white", borderColor: "#1CB0F6", color: "#1CB0F6" }
+        }
         title="Toggle slow playback"
       >
         {speed === 0.75 ? "0.75×" : "1×"}
@@ -111,3 +110,4 @@ export function PronunciationPlayer({ text, phonetic, size = "md" }: Pronunciati
     </div>
   );
 }
+

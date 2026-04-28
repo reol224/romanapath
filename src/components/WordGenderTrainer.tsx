@@ -68,33 +68,33 @@ export function WordGenderTrainer({ isOpen, onClose }: WordGenderTrainerProps) {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       className="fixed inset-0 z-50 flex items-center justify-center p-4"
-      style={{ backgroundColor: "rgba(30,26,22,0.7)", backdropFilter: "blur(4px)" }}
+      style={{ backgroundColor: "rgba(0,0,0,0.5)", backdropFilter: "blur(2px)" }}
       onClick={e => { if (e.target === e.currentTarget) onClose(); }}
     >
       <motion.div
         initial={{ scale: 0.95, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         exit={{ scale: 0.95, opacity: 0 }}
-        className="w-full max-w-3xl rounded-2xl shadow-2xl overflow-hidden max-h-[90vh] flex flex-col"
-        style={{ backgroundColor: "#F5EFE0", border: "1px solid rgba(139,26,26,0.15)" }}
+        className="w-full max-w-3xl rounded-3xl overflow-hidden max-h-[90vh] flex flex-col"
+        style={{ backgroundColor: "#FFFFFF", boxShadow: "0 8px 0 #E5E5E5, 0 0 0 2px #E5E5E5" }}
       >
         {/* Header */}
-        <div className="px-6 py-4 flex items-center justify-between shrink-0" style={{ borderBottom: "1px solid rgba(30,26,22,0.1)" }}>
+        <div className="px-6 py-5 flex items-center justify-between shrink-0" style={{ borderBottom: "2px solid #F0F0F0" }}>
           <div>
-            <h2 className="font-bold text-xl" style={{ fontFamily: "Fraunces, serif", color: "#1E1A16" }}>Word Gender Trainer</h2>
-            <p className="text-xs mt-0.5" style={{ color: "#1E1A16", opacity: 0.5 }}>Drag words into the correct gender column</p>
+            <h2 className="font-black text-xl tracking-tight" style={{ fontFamily: "Nunito, sans-serif", color: "#3C3C3C" }}>⚧ Word Gender Trainer</h2>
+            <p className="text-xs font-bold mt-0.5" style={{ fontFamily: "Nunito, sans-serif", color: "#AFAFAF" }}>Drag words into the correct gender column</p>
           </div>
           <div className="flex items-center gap-2">
             {score !== null && (
-              <span className="text-sm font-bold" style={{ color: score === genderWords.length ? "#2D5A27" : "#C9922A" }}>
+              <span className="text-sm font-black" style={{ fontFamily: "Nunito, sans-serif", color: score === genderWords.length ? "#58CC02" : "#FF9600" }}>
                 {score}/{genderWords.length}
               </span>
             )}
-            <button onClick={reset} className="p-2 rounded-lg hover:bg-black/5 transition-colors" title="Shuffle & reset">
-              <Shuffle className="w-5 h-5" style={{ color: "#1E1A16" }} />
+            <button onClick={reset} className="w-9 h-9 flex items-center justify-center rounded-xl transition-colors" title="Shuffle & reset" style={{ backgroundColor: "#F7F7F7", border: "2px solid #E5E5E5" }}>
+              <Shuffle className="w-4 h-4" style={{ color: "#AFAFAF" }} />
             </button>
-            <button onClick={onClose} className="p-2 rounded-lg hover:bg-black/5 transition-colors">
-              <X className="w-5 h-5" style={{ color: "#1E1A16" }} />
+            <button onClick={onClose} className="w-9 h-9 flex items-center justify-center rounded-xl transition-colors" style={{ backgroundColor: "#F7F7F7", border: "2px solid #E5E5E5" }}>
+              <X className="w-4 h-4" style={{ color: "#AFAFAF" }} />
             </button>
           </div>
         </div>
@@ -103,28 +103,29 @@ export function WordGenderTrainer({ isOpen, onClose }: WordGenderTrainerProps) {
           {/* Unplaced words bank */}
           {unplaced.length > 0 && (
             <div className="mb-5">
-              <p className="text-xs font-semibold mb-2 uppercase tracking-wider" style={{ color: "#1E1A16", opacity: 0.4 }}>
+              <p className="text-xs font-black mb-2 uppercase tracking-wider" style={{ fontFamily: "Nunito, sans-serif", color: "#AFAFAF" }}>
                 Word Bank — drag into a column
               </p>
-              <div className="flex flex-wrap gap-2 min-h-[48px] p-3 rounded-xl" style={{ backgroundColor: "rgba(30,26,22,0.04)", border: "1.5px dashed rgba(30,26,22,0.2)" }}>
+              <div className="flex flex-wrap gap-2 min-h-[48px] p-3 rounded-2xl" style={{ backgroundColor: "#F7F7F7", border: "2px dashed #E5E5E5" }}>
                 {unplaced.map(w => (
                   <div
                     key={w.id}
                     draggable
                     onDragStart={() => handleDragStart(w.id)}
                     onDragEnd={() => { setDragging(null); setDragOver(null); }}
-                    className="px-3 py-1.5 rounded-full cursor-grab active:cursor-grabbing select-none transition-all hover:shadow-sm"
+                    className="px-3 py-1.5 rounded-full cursor-grab active:cursor-grabbing select-none transition-all"
                     style={{
                       backgroundColor: "white",
-                      border: "1.5px solid rgba(30,26,22,0.15)",
-                      color: "#1E1A16",
-                      fontFamily: "Fraunces, serif",
-                      boxShadow: dragging === w.id ? "0 4px 12px rgba(30,26,22,0.15)" : undefined,
+                      border: "2px solid #E5E5E5",
+                      color: "#3C3C3C",
+                      fontFamily: "Nunito, sans-serif",
+                      fontWeight: 700,
+                      boxShadow: dragging === w.id ? "0 4px 12px rgba(0,0,0,0.15)" : "0 3px 0 #E5E5E5",
                       opacity: dragging === w.id ? 0.5 : 1,
                     }}
                   >
-                    <span className="font-semibold">{w.romanian}</span>
-                    <span className="text-xs ml-1.5 opacity-50">{w.english}</span>
+                    <span className="font-bold">{w.romanian}</span>
+                    <span className="text-xs ml-1.5 font-bold" style={{ color: "#AFAFAF" }}>{w.english}</span>
                   </div>
                 ))}
               </div>
@@ -139,15 +140,15 @@ export function WordGenderTrainer({ isOpen, onClose }: WordGenderTrainerProps) {
                 onDragOver={e => handleDragOver(e, key)}
                 onDragLeave={() => setDragOver(null)}
                 onDrop={() => handleDrop(key)}
-                className="rounded-xl min-h-[200px] p-3 transition-all"
+                className="rounded-2xl min-h-[200px] p-3 transition-all"
                 style={{
-                  backgroundColor: dragOver === key ? bg : "rgba(30,26,22,0.03)",
-                  border: `2px ${dragOver === key ? "solid" : "dashed"} ${dragOver === key ? color : "rgba(30,26,22,0.15)"}`,
+                  backgroundColor: dragOver === key ? bg : "#F7F7F7",
+                  border: `2px ${dragOver === key ? "solid" : "dashed"} ${dragOver === key ? color : "#E5E5E5"}`,
                 }}
               >
                 <div className="flex items-center gap-1.5 mb-3">
                   <span className="text-lg" style={{ color }}>{icon}</span>
-                  <span className="text-xs font-bold uppercase tracking-wider" style={{ color }}>{label}</span>
+                  <span className="text-xs font-black uppercase tracking-wider" style={{ fontFamily: "Nunito, sans-serif", color }}>{label}</span>
                 </div>
                 <div className="flex flex-col gap-1.5">
                   {placedByGender(key).map(w => {
@@ -159,32 +160,32 @@ export function WordGenderTrainer({ isOpen, onClose }: WordGenderTrainerProps) {
                         layout
                         initial={{ scale: 0.8, opacity: 0 }}
                         animate={{ scale: 1, opacity: 1 }}
-                        className="px-3 py-2 rounded-lg flex items-center justify-between group"
+                        className="px-3 py-2 rounded-xl flex items-center justify-between group"
                         style={{
-                          backgroundColor: ok ? "rgba(45,90,39,0.1)" : bad ? "rgba(139,26,26,0.1)" : "white",
-                          border: `1.5px solid ${ok ? "#2D5A27" : bad ? "#8B1A1A" : "rgba(30,26,22,0.12)"}`,
+                          backgroundColor: ok ? "#E6F9E8" : bad ? "#FFECEC" : "white",
+                          border: `2px solid ${ok ? "#58CC02" : bad ? "#FF4B4B" : "#E5E5E5"}`,
                         }}
                       >
                         <div>
-                          <span className="text-sm font-semibold" style={{ fontFamily: "Fraunces, serif", color: "#1E1A16" }}>
+                          <span className="text-sm font-black" style={{ fontFamily: "Nunito, sans-serif", color: "#3C3C3C" }}>
                             {w.romanian}
                           </span>
-                          <span className="text-xs ml-1.5" style={{ color: "#1E1A16", opacity: 0.5 }}>{w.english}</span>
+                          <span className="text-xs ml-1.5 font-bold" style={{ fontFamily: "Nunito, sans-serif", color: "#AFAFAF" }}>{w.english}</span>
                           {bad && checked && (
-                            <p className="text-xs mt-0.5" style={{ color: "#8B1A1A" }}>→ {w.gender}</p>
+                            <p className="text-xs mt-0.5 font-bold" style={{ fontFamily: "Nunito, sans-serif", color: "#FF4B4B" }}>→ {w.gender}</p>
                           )}
                           {checked && (
-                            <p className="text-xs mt-0.5" style={{ color: "#1E1A16", opacity: 0.5 }}>{w.tip}</p>
+                            <p className="text-xs mt-0.5 font-bold" style={{ fontFamily: "Nunito, sans-serif", color: "#AFAFAF" }}>{w.tip}</p>
                           )}
                         </div>
                         <div className="flex items-center gap-1">
-                          {ok && <Check className="w-3.5 h-3.5" style={{ color: "#2D5A27" }} />}
-                          {bad && <X className="w-3.5 h-3.5" style={{ color: "#8B1A1A" }} />}
+                          {ok && <Check className="w-3.5 h-3.5" style={{ color: "#58CC02" }} />}
+                          {bad && <X className="w-3.5 h-3.5" style={{ color: "#FF4B4B" }} />}
                           {!checked && (
                             <button
                               onClick={() => handleRemove(w.id)}
                               className="opacity-0 group-hover:opacity-100 p-0.5 rounded hover:bg-black/10 transition-all"
-                              style={{ color: "#1E1A16" }}
+                              style={{ color: "#AFAFAF" }}
                             >
                               <X className="w-3 h-3" />
                             </button>
@@ -204,16 +205,16 @@ export function WordGenderTrainer({ isOpen, onClose }: WordGenderTrainerProps) {
               <button
                 onClick={checkAnswers}
                 disabled={Object.keys(placed).length === 0}
-                className="flex-1 py-3 rounded-xl font-semibold text-sm transition-all hover:opacity-90 disabled:opacity-40"
-                style={{ backgroundColor: "#8B1A1A", color: "#F5EFE0" }}
+                className="flex-1 py-3 rounded-2xl font-black text-sm transition-all disabled:opacity-40"
+                style={{ backgroundColor: "#58CC02", color: "white", fontFamily: "Nunito, sans-serif", boxShadow: "0 4px 0 #46A302" }}
               >
                 Check Answers ({Object.keys(placed).length}/{genderWords.length} placed)
               </button>
             ) : (
               <button
                 onClick={reset}
-                className="flex-1 py-3 rounded-xl font-semibold text-sm transition-all hover:opacity-90 flex items-center justify-center gap-2"
-                style={{ backgroundColor: "#1E1A16", color: "#F5EFE0" }}
+                className="flex-1 py-3 rounded-2xl font-black text-sm transition-all flex items-center justify-center gap-2"
+                style={{ backgroundColor: "#1CB0F6", color: "white", fontFamily: "Nunito, sans-serif", boxShadow: "0 4px 0 #0A90D0" }}
               >
                 <RotateCcw className="w-4 h-4" /> Try Again
               </button>

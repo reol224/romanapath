@@ -40,20 +40,22 @@ const tools: {
   icon: string;
   title: string;
   description: string;
-  color: string;
-  bg: string;
+  iconBg: string;
+  shadowColor: string;
   tag: string;
+  tagColor: string;
+  tagBg: string;
 }[] = [
-  { id: "tongue-twister", icon: "👅", title: "Tongue Twisters", description: "Drill difficult Romanian sounds", color: "#8B1A1A", bg: "#F9E8E8", tag: "Pronunciation" },
-  { id: "flashcards", icon: "📚", title: "Flashcard Deck", description: "Spaced repetition vocabulary", color: "#1A3A6B", bg: "#E3EAF9", tag: "Vocabulary" },
-  { id: "diacritics", icon: "ș", title: "Diacritics Trainer", description: "Master ă â î ș ț", color: "#2D5A27", bg: "#E8F5E3", tag: "Writing" },
-  { id: "gender", icon: "♂♀◆", title: "Gender Trainer", description: "Drag-drop noun gender sorting", color: "#C9922A", bg: "#FFF3DC", tag: "Grammar" },
-  { id: "cases", icon: "📐", title: "Case Declension", description: "Interactive case tables", color: "#8B1A1A", bg: "#F9E8E8", tag: "Grammar" },
-  { id: "verbs", icon: "📝", title: "Verb Driller", description: "All 6 persons, multiple tenses", color: "#1A3A6B", bg: "#E3EAF9", tag: "Grammar" },
-  { id: "sentences", icon: "🔧", title: "Sentence Builder", description: "Word-order drag-and-drop", color: "#2D5A27", bg: "#E8F5E3", tag: "Grammar" },
-  { id: "badges", icon: "🏆", title: "Achievements", description: "Track your milestones", color: "#C9922A", bg: "#FFF3DC", tag: "Progress" },
-  { id: "culture", icon: "🇷🇴", title: "Cultural Notes", description: "Language in cultural context", color: "#8B1A1A", bg: "#F9E8E8", tag: "Culture" },
-  { id: "proverbs", icon: "📖", title: "Proverbs", description: "Romanian folk wisdom", color: "#1A3A6B", bg: "#E3EAF9", tag: "Culture" },
+  { id: "tongue-twister", icon: "👅", title: "Tongue Twisters", description: "Drill difficult sounds", iconBg: "#DDF4FF", shadowColor: "#84D8FF", tag: "Pronunciation", tagColor: "#1CB0F6", tagBg: "#DDF4FF" },
+  { id: "flashcards", icon: "📚", title: "Flashcards", description: "Spaced repetition vocab", iconBg: "#FFF0D4", shadowColor: "#FFCC85", tag: "Vocabulary", tagColor: "#FF9600", tagBg: "#FFF0D4" },
+  { id: "diacritics", icon: "ș", title: "Diacritics Trainer", description: "Master ă â î ș ț", iconBg: "#D7FFB8", shadowColor: "#89E219", tag: "Writing", tagColor: "#58CC02", tagBg: "#D7FFB8" },
+  { id: "gender", icon: "⚡", title: "Gender Trainer", description: "Noun gender sorting", iconBg: "#FFF0D4", shadowColor: "#FFCC85", tag: "Grammar", tagColor: "#FF9600", tagBg: "#FFF0D4" },
+  { id: "cases", icon: "📐", title: "Case Declension", description: "Interactive case tables", iconBg: "#F0D9FF", shadowColor: "#CE82FF", tag: "Grammar", tagColor: "#9B59F5", tagBg: "#F0D9FF" },
+  { id: "verbs", icon: "📝", title: "Verb Driller", description: "All 6 persons & tenses", iconBg: "#DDF4FF", shadowColor: "#84D8FF", tag: "Grammar", tagColor: "#1CB0F6", tagBg: "#DDF4FF" },
+  { id: "sentences", icon: "🔧", title: "Sentence Builder", description: "Word-order drag & drop", iconBg: "#D7FFB8", shadowColor: "#89E219", tag: "Grammar", tagColor: "#58CC02", tagBg: "#D7FFB8" },
+  { id: "badges", icon: "🏆", title: "Achievements", description: "Track your milestones", iconBg: "#FFF0D4", shadowColor: "#FFCC85", tag: "Progress", tagColor: "#FF9600", tagBg: "#FFF0D4" },
+  { id: "culture", icon: "🇷🇴", title: "Cultural Notes", description: "Language in context", iconBg: "#FFE0E0", shadowColor: "#FF9090", tag: "Culture", tagColor: "#FF4B4B", tagBg: "#FFE0E0" },
+  { id: "proverbs", icon: "📖", title: "Proverbs", description: "Romanian folk wisdom", iconBg: "#F0D9FF", shadowColor: "#CE82FF", tag: "Culture", tagColor: "#9B59F5", tagBg: "#F0D9FF" },
 ];
 
 export function ToolsHub({ isOpen, onClose, stats, onFlashcardReviewed, onDiacriticsCorrect, onTongueTwisterComplete, onVerbDrilled }: ToolsHubProps) {
@@ -77,28 +79,32 @@ export function ToolsHub({ isOpen, onClose, stats, onFlashcardReviewed, onDiacri
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             className="fixed inset-0 z-50 flex items-center justify-center p-4"
-            style={{ backgroundColor: "rgba(30,26,22,0.7)", backdropFilter: "blur(4px)" }}
+            style={{ backgroundColor: "rgba(0,0,0,0.5)", backdropFilter: "blur(2px)" }}
             onClick={e => { if (e.target === e.currentTarget) onClose(); }}
           >
             <motion.div
               initial={{ scale: 0.95, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.95, opacity: 0 }}
-              className="w-full max-w-2xl rounded-2xl shadow-2xl overflow-hidden max-h-[90vh] flex flex-col"
-              style={{ backgroundColor: "#F5EFE0", border: "1px solid rgba(139,26,26,0.15)" }}
+              className="w-full max-w-2xl rounded-3xl overflow-hidden max-h-[90vh] flex flex-col"
+              style={{ backgroundColor: "#FFFFFF", boxShadow: "0 8px 0 #E5E5E5, 0 0 0 2px #E5E5E5" }}
             >
               {/* Header */}
-              <div className="px-6 py-5 flex items-center justify-between shrink-0" style={{ borderBottom: "1px solid rgba(30,26,22,0.1)" }}>
+              <div className="px-6 py-5 flex items-center justify-between shrink-0" style={{ borderBottom: "2px solid #F0F0F0" }}>
                 <div>
-                  <h2 className="font-bold text-2xl" style={{ fontFamily: "Fraunces, serif", color: "#1E1A16" }}>
-                    Learning Tools
+                  <h2 className="font-black text-2xl tracking-tight" style={{ fontFamily: "Nunito, sans-serif", color: "#3C3C3C" }}>
+                    🛠️ Learning Tools
                   </h2>
-                  <p className="text-sm mt-0.5" style={{ color: "#1E1A16", opacity: 0.5 }}>
-                    Drills, practice modules & cultural exploration
+                  <p className="text-sm font-bold mt-0.5" style={{ fontFamily: "Nunito, sans-serif", color: "#AFAFAF" }}>
+                    Drills, practice & cultural exploration
                   </p>
                 </div>
-                <button onClick={onClose} className="p-2 rounded-lg hover:bg-black/5 transition-colors">
-                  <X className="w-5 h-5" style={{ color: "#1E1A16" }} />
+                <button
+                  onClick={onClose}
+                  className="w-9 h-9 flex items-center justify-center rounded-xl transition-colors"
+                  style={{ backgroundColor: "#F7F7F7", border: "2px solid #E5E5E5" }}
+                >
+                  <X className="w-4 h-4" style={{ color: "#AFAFAF" }} />
                 </button>
               </div>
 
@@ -111,27 +117,33 @@ export function ToolsHub({ isOpen, onClose, stats, onFlashcardReviewed, onDiacri
                       initial={{ opacity: 0, y: 16 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: i * 0.04 }}
-                      whileHover={{ scale: 1.03 }}
-                      whileTap={{ scale: 0.97 }}
+                      whileTap={{ y: 4 }}
                       onClick={() => openTool(tool.id)}
-                      className="text-left rounded-2xl p-4 transition-all"
+                      className="text-left rounded-2xl p-4 transition-colors"
                       style={{
-                        backgroundColor: "white",
-                        border: "1.5px solid rgba(30,26,22,0.08)",
-                        boxShadow: "0 2px 8px rgba(30,26,22,0.05)",
+                        backgroundColor: "#FFFFFF",
+                        border: "2px solid #E5E5E5",
+                        boxShadow: `0 4px 0 #E5E5E5`,
                       }}
                     >
-                      <div className="text-2xl mb-3">{tool.icon}</div>
+                      {/* Icon bubble */}
+                      <div
+                        className="w-12 h-12 rounded-2xl flex items-center justify-center text-2xl mb-3"
+                        style={{ backgroundColor: tool.iconBg }}
+                      >
+                        {tool.icon}
+                      </div>
+                      {/* Tag */}
                       <span
-                        className="text-xs font-bold px-2 py-0.5 rounded-full mb-2 inline-block"
-                        style={{ backgroundColor: tool.bg, color: tool.color }}
+                        className="text-xs font-black px-2 py-0.5 rounded-full mb-2 inline-block uppercase tracking-wide"
+                        style={{ backgroundColor: tool.tagBg, color: tool.tagColor, fontFamily: "Nunito, sans-serif" }}
                       >
                         {tool.tag}
                       </span>
-                      <p className="text-sm font-bold leading-tight mb-1" style={{ fontFamily: "Fraunces, serif", color: "#1E1A16" }}>
+                      <p className="text-sm font-black leading-tight mb-1" style={{ fontFamily: "Nunito, sans-serif", color: "#3C3C3C" }}>
                         {tool.title}
                       </p>
-                      <p className="text-xs leading-tight" style={{ color: "#1E1A16", opacity: 0.5 }}>
+                      <p className="text-xs font-bold leading-tight" style={{ fontFamily: "Nunito, sans-serif", color: "#AFAFAF" }}>
                         {tool.description}
                       </p>
                     </motion.button>

@@ -83,28 +83,28 @@ export function DiacriticsTrainer({ isOpen, onClose, onCorrect }: DiacriticsTrai
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       className="fixed inset-0 z-50 flex items-center justify-center p-4"
-      style={{ backgroundColor: "rgba(30,26,22,0.7)", backdropFilter: "blur(4px)" }}
+      style={{ backgroundColor: "rgba(0,0,0,0.5)", backdropFilter: "blur(2px)" }}
       onClick={e => { if (e.target === e.currentTarget) onClose(); }}
     >
       <motion.div
         initial={{ scale: 0.95, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         exit={{ scale: 0.95, opacity: 0 }}
-        className="w-full max-w-lg rounded-2xl shadow-2xl overflow-hidden"
-        style={{ backgroundColor: "#F5EFE0", border: "1px solid rgba(139,26,26,0.15)" }}
+        className="w-full max-w-lg rounded-3xl overflow-hidden"
+        style={{ backgroundColor: "#FFFFFF", boxShadow: "0 8px 0 #E5E5E5, 0 0 0 2px #E5E5E5" }}
       >
         {/* Header */}
-        <div className="px-6 py-4 flex items-center justify-between" style={{ borderBottom: "1px solid rgba(30,26,22,0.1)" }}>
+        <div className="px-6 py-5 flex items-center justify-between" style={{ borderBottom: "2px solid #F0F0F0" }}>
           <div>
-            <h2 className="font-bold text-xl" style={{ fontFamily: "Fraunces, serif", color: "#1E1A16" }}>Diacritics Trainer</h2>
-            <p className="text-xs mt-0.5" style={{ color: "#1E1A16", opacity: 0.5 }}>Type ă â î ș ț correctly</p>
+            <h2 className="font-black text-xl tracking-tight" style={{ fontFamily: "Nunito, sans-serif", color: "#3C3C3C" }}>✍️ Diacritics Trainer</h2>
+            <p className="text-xs font-bold mt-0.5" style={{ fontFamily: "Nunito, sans-serif", color: "#AFAFAF" }}>Type ă â î ș ț correctly</p>
           </div>
           <div className="flex items-center gap-3">
-            <span className="text-sm font-bold" style={{ color: "#2D5A27" }}>
+            <span className="text-sm font-black" style={{ fontFamily: "Nunito, sans-serif", color: "#58CC02" }}>
               {score}/{total}
             </span>
-            <button onClick={onClose} className="p-2 rounded-lg hover:bg-black/5 transition-colors">
-              <X className="w-5 h-5" style={{ color: "#1E1A16" }} />
+            <button onClick={onClose} className="w-9 h-9 flex items-center justify-center rounded-xl transition-colors" style={{ backgroundColor: "#F7F7F7", border: "2px solid #E5E5E5" }}>
+              <X className="w-4 h-4" style={{ color: "#AFAFAF" }} />
             </button>
           </div>
         </div>
@@ -115,22 +115,22 @@ export function DiacriticsTrainer({ isOpen, onClose, onCorrect }: DiacriticsTrai
             {diacriticsExercises.map((_, i) => (
               <div
                 key={i}
-                className="h-1.5 flex-1 rounded-full transition-all"
-                style={{ backgroundColor: i < current ? "#8B1A1A" : i === current ? "#C9922A" : "rgba(30,26,22,0.15)" }}
+                className="h-2 flex-1 rounded-full transition-all"
+                style={{ backgroundColor: i < current ? "#58CC02" : i === current ? "#FF9600" : "#F0F0F0" }}
               />
             ))}
           </div>
 
           {/* Exercise */}
-          <div className="rounded-xl p-5 mb-4" style={{ backgroundColor: "rgba(139,26,26,0.04)", border: "1px solid rgba(139,26,26,0.12)" }}>
-            <p className="text-sm font-semibold mb-1" style={{ color: "#1E1A16", opacity: 0.6 }}>
+          <div className="rounded-2xl p-5 mb-4" style={{ backgroundColor: "#F7F7F7", border: "2px solid #E5E5E5" }}>
+            <p className="text-xs font-black mb-1" style={{ fontFamily: "Nunito, sans-serif", color: "#AFAFAF" }}>
               {current + 1} of {diacriticsExercises.length}
             </p>
-            <p className="text-lg font-semibold mb-1" style={{ fontFamily: "Fraunces, serif", color: "#1E1A16" }}>
+            <p className="text-lg font-black mb-1" style={{ fontFamily: "Nunito, sans-serif", color: "#3C3C3C" }}>
               {exercise.prompt}
             </p>
             {exercise.hint && (
-              <p className="text-sm" style={{ fontFamily: "IBM Plex Mono, monospace", color: "#8B1A1A" }}>
+              <p className="text-sm font-bold" style={{ fontFamily: "Nunito, sans-serif", color: "#1CB0F6" }}>
                 Hint: {exercise.hint}
               </p>
             )}
@@ -144,24 +144,24 @@ export function DiacriticsTrainer({ isOpen, onClose, onCorrect }: DiacriticsTrai
               onChange={e => { if (!submitted) setInput(e.target.value); }}
               onKeyDown={e => { if (e.key === "Enter") handleSubmit(); }}
               placeholder="Type your answer here…"
-              className="w-full px-4 py-3 rounded-xl text-lg outline-none transition-all"
+              className="w-full px-4 py-3 rounded-2xl text-lg outline-none transition-all font-bold"
               style={{
                 backgroundColor: submitted
-                  ? correct ? "rgba(45,90,39,0.08)" : "rgba(139,26,26,0.06)"
+                  ? correct ? "#E6F9E8" : "#FFECEC"
                   : "white",
                 border: submitted
-                  ? `2px solid ${correct ? "#2D5A27" : "#8B1A1A"}`
-                  : "2px solid rgba(30,26,22,0.15)",
-                fontFamily: "IBM Plex Mono, monospace",
-                color: "#1E1A16",
+                  ? `2px solid ${correct ? "#58CC02" : "#FF4B4B"}`
+                  : "2px solid #E5E5E5",
+                fontFamily: "Nunito, sans-serif",
+                color: "#3C3C3C",
               }}
               autoFocus
             />
             {submitted && (
               <div className="absolute right-3 top-1/2 -translate-y-1/2">
                 {correct
-                  ? <Check className="w-5 h-5" style={{ color: "#2D5A27" }} />
-                  : <X className="w-5 h-5" style={{ color: "#8B1A1A" }} />}
+                  ? <Check className="w-5 h-5" style={{ color: "#58CC02" }} />
+                  : <X className="w-5 h-5" style={{ color: "#FF4B4B" }} />}
               </div>
             )}
           </div>
@@ -172,11 +172,13 @@ export function DiacriticsTrainer({ isOpen, onClose, onCorrect }: DiacriticsTrai
               <button
                 key={char}
                 onClick={() => insertDiacritic(char)}
-                className="w-10 h-10 rounded-lg font-bold text-base transition-all hover:opacity-80 active:scale-95"
+                className="w-10 h-10 rounded-xl font-black text-base transition-all active:scale-95"
                 style={{
-                  backgroundColor: "#1E1A16",
-                  color: "#F5EFE0",
-                  fontFamily: "IBM Plex Mono, monospace",
+                  backgroundColor: "#1CB0F6",
+                  color: "white",
+                  fontFamily: "Nunito, sans-serif",
+                  border: "2px solid #0A90D0",
+                  boxShadow: "0 3px 0 #0A90D0",
                 }}
               >
                 {label}
@@ -184,8 +186,8 @@ export function DiacriticsTrainer({ isOpen, onClose, onCorrect }: DiacriticsTrai
             ))}
             <button
               onClick={() => setInput(i => i.slice(0, -1))}
-              className="w-10 h-10 rounded-lg flex items-center justify-center transition-all hover:bg-black/10"
-              style={{ backgroundColor: "rgba(30,26,22,0.1)", color: "#1E1A16" }}
+              className="w-10 h-10 rounded-xl flex items-center justify-center transition-all"
+              style={{ backgroundColor: "#F7F7F7", border: "2px solid #E5E5E5", color: "#AFAFAF", boxShadow: "0 3px 0 #E5E5E5" }}
             >
               <Delete className="w-4 h-4" />
             </button>
@@ -198,21 +200,21 @@ export function DiacriticsTrainer({ isOpen, onClose, onCorrect }: DiacriticsTrai
                 initial={{ opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -8 }}
-                className="rounded-xl p-4 mb-4"
+                className="rounded-2xl p-4 mb-4"
                 style={{
-                  backgroundColor: correct ? "rgba(45,90,39,0.08)" : "rgba(139,26,26,0.06)",
-                  border: `1px solid ${correct ? "rgba(45,90,39,0.2)" : "rgba(139,26,26,0.2)"}`,
+                  backgroundColor: correct ? "#E6F9E8" : "#FFECEC",
+                  border: `2px solid ${correct ? "#58CC02" : "#FF4B4B"}`,
                 }}
               >
                 {!correct && (
-                  <p className="text-sm font-bold mb-1" style={{ color: "#8B1A1A" }}>
-                    Correct answer: <span style={{ fontFamily: "IBM Plex Mono, monospace" }}>{exercise.answer}</span>
+                  <p className="text-sm font-black mb-1" style={{ fontFamily: "Nunito, sans-serif", color: "#FF4B4B" }}>
+                    Correct answer: <span>{exercise.answer}</span>
                   </p>
                 )}
                 {correct && (
-                  <p className="text-sm font-bold mb-1" style={{ color: "#2D5A27" }}>✓ Correct!</p>
+                  <p className="text-sm font-black mb-1" style={{ fontFamily: "Nunito, sans-serif", color: "#58CC02" }}>✓ Correct!</p>
                 )}
-                <p className="text-sm" style={{ color: "#1E1A16", opacity: 0.7 }}>{exercise.explanation}</p>
+                <p className="text-sm font-bold" style={{ fontFamily: "Nunito, sans-serif", color: "#AFAFAF" }}>{exercise.explanation}</p>
               </motion.div>
             )}
           </AnimatePresence>
@@ -222,22 +224,22 @@ export function DiacriticsTrainer({ isOpen, onClose, onCorrect }: DiacriticsTrai
             <button
               onClick={handleSubmit}
               disabled={!input.trim()}
-              className="w-full py-3 rounded-xl font-semibold text-sm transition-all hover:opacity-90 disabled:opacity-40"
-              style={{ backgroundColor: "#8B1A1A", color: "#F5EFE0" }}
+              className="w-full py-3 rounded-2xl font-black text-sm transition-all disabled:opacity-40"
+              style={{ backgroundColor: "#58CC02", color: "white", fontFamily: "Nunito, sans-serif", boxShadow: "0 4px 0 #46A302" }}
             >
               Check Answer
             </button>
           ) : (
             <button
               onClick={handleNext}
-              className="w-full py-3 rounded-xl font-semibold text-sm transition-all hover:opacity-90 flex items-center justify-center gap-2"
-              style={{ backgroundColor: "#1E1A16", color: "#F5EFE0" }}
+              className="w-full py-3 rounded-2xl font-black text-sm transition-all flex items-center justify-center gap-2"
+              style={{ backgroundColor: "#1CB0F6", color: "white", fontFamily: "Nunito, sans-serif", boxShadow: "0 4px 0 #0A90D0" }}
             >
               Next Exercise <ChevronRight className="w-4 h-4" />
             </button>
           )}
 
-          <button onClick={reset} className="w-full mt-2 py-1.5 text-xs opacity-30 hover:opacity-60 transition-opacity flex items-center justify-center gap-1.5" style={{ color: "#1E1A16" }}>
+          <button onClick={reset} className="w-full mt-2 py-1.5 text-xs font-black opacity-40 hover:opacity-70 transition-opacity flex items-center justify-center gap-1.5" style={{ fontFamily: "Nunito, sans-serif", color: "#AFAFAF" }}>
             <RotateCcw className="w-3.5 h-3.5" /> Reset
           </button>
         </div>

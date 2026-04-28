@@ -8,59 +8,63 @@ interface LessonCardProps {
 }
 
 export function LessonCard({ lesson, levelColor, onClick }: LessonCardProps) {
+  const isPronunciation = lesson.type === "pronunciation";
+
   return (
     <button
       onClick={onClick}
-      className={`w-full text-left group relative bg-white border rounded-xl p-4 transition-all duration-200 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-offset-1 ${
-        lesson.completed
-          ? "border-green-200 bg-green-50/50"
-          : "border-[#1E1A16]/10 hover:border-current"
-      }`}
-      style={!lesson.completed ? { "--tw-ring-color": levelColor } as React.CSSProperties : undefined}
+      className="w-full text-left group relative bg-white rounded-2xl p-4 transition-all duration-150 focus:outline-none active:scale-[0.98]"
+      style={{
+        border: `2px solid ${lesson.completed ? "#58CC02" : "#e5e7eb"}`,
+        boxShadow: lesson.completed
+          ? "0 4px 0 #49A800"
+          : "0 4px 0 #d1d5db",
+      }}
     >
-      {/* Left accent border */}
-      <div
-        className="absolute left-0 top-3 bottom-3 w-0.5 rounded-full transition-all duration-200 group-hover:top-0 group-hover:bottom-0"
-        style={{ backgroundColor: lesson.completed ? "#22c55e" : levelColor }}
-      />
-
-      <div className="pl-3">
-        {/* Type badge */}
-        <div className="flex items-center gap-2 mb-2">
-          <span
-            className={`inline-flex items-center gap-1 text-xs font-medium px-2 py-0.5 rounded-full ${
-              lesson.type === "pronunciation"
-                ? "bg-purple-50 text-purple-700"
-                : "bg-blue-50 text-blue-700"
-            }`}
-          >
-            {lesson.type === "pronunciation" ? (
-              <Mic className="w-3 h-3" />
-            ) : (
-              <BookOpen className="w-3 h-3" />
-            )}
-            {lesson.type === "pronunciation" ? "Pronunciation" : "Grammar"}
-          </span>
-
-          {lesson.completed && (
-            <CheckCircle2 className="w-4 h-4 text-green-500 ml-auto" />
+      <div className="flex items-start gap-3">
+        {/* Icon bubble */}
+        <div
+          className="shrink-0 w-10 h-10 rounded-xl flex items-center justify-center"
+          style={{
+            backgroundColor: lesson.completed ? "#D7FFB8" : isPronunciation ? "#EDE9FE" : "#DBEAFE",
+          }}
+        >
+          {lesson.completed ? (
+            <CheckCircle2 className="w-5 h-5 text-[#58CC02]" />
+          ) : isPronunciation ? (
+            <Mic className="w-5 h-5 text-violet-600" />
+          ) : (
+            <BookOpen className="w-5 h-5 text-blue-600" />
           )}
         </div>
 
-        {/* Title */}
-        <h3
-          className="font-semibold text-[#1E1A16] text-sm leading-snug mb-2 group-hover:text-[#8B1A1A] transition-colors"
-          style={{ fontFamily: "'Fraunces', 'Georgia', serif" }}
-        >
-          {lesson.title}
-        </h3>
+        <div className="flex-1 min-w-0">
+          {/* Type badge */}
+          <span
+            className={`inline-block text-xs font-black px-2 py-0.5 rounded-full mb-1 ${
+              lesson.completed
+                ? "bg-[#D7FFB8] text-[#3a8a00]"
+                : isPronunciation
+                ? "bg-violet-100 text-violet-700"
+                : "bg-blue-100 text-blue-700"
+            }`}
+          >
+            {isPronunciation ? "Pronunciation" : "Grammar"}
+          </span>
 
-        {/* Footer */}
-        <div className="flex items-center gap-1 text-xs text-[#1E1A16]/45">
-          <Clock className="w-3 h-3" />
-          <span>{lesson.estimatedMinutes} min</span>
+          {/* Title */}
+          <h3 className="font-black text-gray-800 text-sm leading-snug mb-1.5 group-hover:text-gray-600 transition-colors">
+            {lesson.title}
+          </h3>
+
+          {/* Footer */}
+          <div className="flex items-center gap-1 text-xs text-gray-400 font-bold">
+            <Clock className="w-3 h-3" />
+            <span>{lesson.estimatedMinutes} min</span>
+          </div>
         </div>
       </div>
     </button>
   );
 }
+
