@@ -3983,37 +3983,81 @@ export const curriculum: Level[] = [
     code: "B2",
     title: "Upper Intermediate",
     description:
-      "Navigate subjunctive mood, complex discourse, and idiomatic expressions.",
+      "Navigate complex discourse, idiomatic expressions, and nuanced grammar at near-fluency level.",
     color: "#1A3A6B",
     badgeColor: "bg-[#1A3A6B] text-white",
     unlocked: false,
     lessons: [
       {
         id: "b2-l1",
-        title: "Subjunctive Mood",
+        title: "Advanced Subjunctive: All Tenses",
         type: "grammar",
-        estimatedMinutes: 35,
+        estimatedMinutes: 28,
         completed: false,
         sections: [
           {
-            title: "The Conjunctiv",
+            title: "Present & Past Subjunctive",
             content:
-              "The Romanian subjunctive (conjunctiv) is used far more frequently than in English. It appears after verbs of wanting, wishing, necessity, and many conjunctions. It is formed with 'să' + present or past form.",
+              "The Romanian subjunctive (conjunctiv) uses 'să' + verb. The present subjunctive follows 'să' directly. The past subjunctive uses 'să' + 'fi' + past participle for actions completed before the main clause.",
             examples: [
               {
-                romanian: "Vreau să merg.",
-                phonetic: "[vryow suh merg]",
-                english: "I want to go.",
+                romanian: "Vreau să merg la piață.",
+                phonetic: "[VRYOW suh MERG lah PYAH-tsuh]",
+                english: "I want to go to the market.",
               },
               {
-                romanian: "Trebuie să înveți.",
-                phonetic: "[TREH-boo-yeh suh un-VEHTS]",
-                english: "You must study.",
+                romanian: "E bine că ai venit.",
+                phonetic: "[yeh BEE-neh kuh ay veh-NEET]",
+                english: "It's good that you came.",
               },
               {
-                romanian: "E important să știi.",
-                phonetic: "[yeh eem-por-TAHNT suh shtyee]",
-                english: "It's important to know.",
+                romanian: "Mă bucur să fi terminat.",
+                phonetic: "[muh boo-KOOR suh fee tehr-mee-NAHT]",
+                english: "I'm glad to have finished.",
+              },
+            ],
+          },
+          {
+            title: "Triggers of the Subjunctive",
+            content:
+              "The subjunctive is required after verbs of wanting, fearing, ordering, allowing, and after many conjunctions. Mastering these triggers is essential for fluency.",
+            examples: [
+              {
+                romanian: "Îți cer să fii sincer.",
+                phonetic: "[uh-tsee CHEHR suh fyee SEEN-chehr]",
+                english: "I ask you to be honest.",
+              },
+              {
+                romanian: "Nu vreau să greșești.",
+                phonetic: "[noo VRYOW suh greh-SHEHSHT]",
+                english: "I don't want you to make a mistake.",
+              },
+              {
+                romanian: "Permite-mi să explic.",
+                phonetic: "[PEHR-mee-teh-mee suh ex-PLEEK]",
+                english: "Allow me to explain.",
+              },
+            ],
+          },
+          {
+            title: "Subjunctive vs. Indicative",
+            content:
+              "The choice between subjunctive and indicative can change meaning. After 'că' (that), use indicative. After 'să', use subjunctive. This distinction is crucial for accurate speech.",
+            examples: [
+              {
+                romanian: "Știu că vine. / Vreau să vină.",
+                phonetic: "[SHTYOO kuh VEE-neh / VRYOW suh VEE-nuh]",
+                english: "I know he's coming. / I want him to come.",
+              },
+              {
+                romanian: "Cred că e adevărat.",
+                phonetic: "[krehd kuh yeh ah-deh-vuh-RAHT]",
+                english: "I believe it's true. (indicative)",
+              },
+              {
+                romanian: "Sper să fie adevărat.",
+                phonetic: "[spehr suh FEE-eh ah-deh-vuh-RAHT]",
+                english: "I hope it's true. (subjunctive)",
               },
             ],
           },
@@ -4022,47 +4066,112 @@ export const curriculum: Level[] = [
           {
             id: "b2-l1-e1",
             type: "multiple-choice",
-            question: "What particle introduces the subjunctive in Romanian?",
+            question: "Which sentence uses the subjunctive correctly?",
             options: [
-              { id: "a", text: "că" },
-              { id: "b", text: "să" },
-              { id: "c", text: "de" },
-              { id: "d", text: "pe" },
+              { id: "a", text: "Știu că să vină." },
+              { id: "b", text: "Vreau că vine." },
+              { id: "c", text: "Sper să vină." },
+              { id: "d", text: "Cred să este." },
+            ],
+            correctAnswer: "c",
+            explanation:
+              "'Sper să vină' is correct — 'sper' (I hope) triggers the subjunctive with 'să'. 'Că' introduces indicative clauses; 'să' introduces subjunctive clauses.",
+          },
+          {
+            id: "b2-l1-e2",
+            type: "fill-blank",
+            question: "Complete: 'Îți cer ___ fii sincer.' (I ask you to be honest)",
+            blankSentence: "Îți cer ___ fii sincer.",
+            correctAnswer: "să",
+            explanation:
+              "'A cere' (to ask/request) triggers the subjunctive. The subjunctive marker 'să' must be used here, giving 'Îți cer să fii sincer.'",
+          },
+          {
+            id: "b2-l1-e3",
+            type: "multiple-choice",
+            question: "What does 'Mă bucur să fi terminat.' express?",
+            options: [
+              { id: "a", text: "A future wish" },
+              { id: "b", text: "Gladness about a completed action" },
+              { id: "c", text: "A present obligation" },
+              { id: "d", text: "A doubt about the present" },
             ],
             correctAnswer: "b",
             explanation:
-              "The particle 'să' introduces the subjunctive (conjunctiv) in Romanian. It's equivalent to 'to' in English infinitives: 'vreau să merg' = 'I want to go'.",
+              "The past subjunctive 'să fi terminat' expresses gladness (bucurie) about something already completed — 'I'm glad to have finished.'",
           },
         ],
       },
       {
         id: "b2-l2",
-        title: "Idiomatic Expressions",
-        type: "grammar",
-        estimatedMinutes: 22,
+        title: "Pronunciation: Intonation & Sentence Stress",
+        type: "pronunciation",
+        estimatedMinutes: 18,
         completed: false,
         sections: [
           {
-            title: "Common Romanian Idioms",
+            title: "Statement vs. Question Intonation",
             content:
-              "Romanian idioms reflect the culture's humor, pragmatism, and Latin roots mixed with Slavic influences. Learning idioms helps you sound natural and understand native speakers.",
+              "Romanian intonation patterns differ from English. Statements have a falling tone at the end. Yes/no questions rise sharply at the end. Information questions (with question words) fall like statements.",
             examples: [
               {
-                romanian: "A da cu bâta-n baltă",
-                phonetic: "[ah dah koo BUH-tah un BAL-tuh]",
-                english:
-                  "To stir up trouble (lit. to hit the pond with a stick)",
+                romanian: "El vine mâine. ↘",
+                phonetic: "[el VEE-neh MUY-neh] (falling tone)",
+                english: "He's coming tomorrow. (statement)",
               },
               {
-                romanian: "A tăia frunze la câini",
-                phonetic: "[ah tuh-YAH FROON-zeh lah KUY-nee]",
-                english: "To waste time (lit. to cut leaves for dogs)",
+                romanian: "Vine mâine? ↗",
+                phonetic: "[VEE-neh MUY-neh] (rising tone)",
+                english: "Is he coming tomorrow? (yes/no question)",
               },
               {
-                romanian: "Capul face, capul trage",
-                phonetic: "[KAH-pool FAH-cheh, KAH-pool TRAH-geh]",
-                english:
-                  "Actions have consequences (lit. the head does, the head bears)",
+                romanian: "Când vine? ↘",
+                phonetic: "[kuhnd VEE-neh] (falling tone)",
+                english: "When is he coming? (information question)",
+              },
+            ],
+          },
+          {
+            title: "Emphatic Stress for Contrast",
+            content:
+              "In Romanian, placing stress on a different word shifts the meaning and implication of a sentence. Native speakers use this heavily in conversation to highlight new information or contrast.",
+            examples: [
+              {
+                romanian: "EU am făcut asta. (not you)",
+                phonetic: "[YEW am fuh-KOOT AH-stah]",
+                english: "I did this. (emphasis on 'I')",
+              },
+              {
+                romanian: "Eu am FĂCUT asta. (not just planned)",
+                phonetic: "[yew am fuh-KOOT AH-stah]",
+                english: "I actually DID this.",
+              },
+              {
+                romanian: "Eu am făcut ASTA. (not something else)",
+                phonetic: "[yew am fuh-KOOT AH-stah]",
+                english: "I did THIS.",
+              },
+            ],
+          },
+          {
+            title: "Reduced & Connected Speech",
+            content:
+              "Fast natural speech causes words to blend together. Unstressed vowels can be reduced or dropped. Knowing these patterns helps you understand native speakers at normal speed.",
+            examples: [
+              {
+                romanian: "Ce faci? → Ce-faci?",
+                phonetic: "[cheh FAHCH → cheh-FAHCH]",
+                english: "How are you? (blended in fast speech)",
+              },
+              {
+                romanian: "Nu știu → N-știu",
+                phonetic: "[noo SHTYOO → n-SHTYOO]",
+                english: "I don't know. (reduced 'nu')",
+              },
+              {
+                romanian: "Îl văd pe el → Îl văd p-el",
+                phonetic: "[ul vuhd peh yel → ul vuhd p-yel]",
+                english: "I see him. (blended preposition)",
               },
             ],
           },
@@ -4071,45 +4180,112 @@ export const curriculum: Level[] = [
           {
             id: "b2-l2-e1",
             type: "multiple-choice",
-            question: "What does 'a tăia frunze la câini' mean?",
+            question: "How does intonation differ between 'Vine mâine.' and 'Vine mâine?'",
             options: [
-              { id: "a", text: "To work very hard" },
-              { id: "b", text: "To waste time doing nothing useful" },
-              { id: "c", text: "To care for animals" },
-              { id: "d", text: "To cut vegetables" },
+              { id: "a", text: "Both have falling intonation" },
+              { id: "b", text: "The statement rises; the question falls" },
+              { id: "c", text: "The statement falls; the yes/no question rises" },
+              { id: "d", text: "Both have rising intonation" },
+            ],
+            correctAnswer: "c",
+            explanation:
+              "Romanian statements end with falling intonation (↘). Yes/no questions rise sharply at the end (↗). This mirrors many European languages but differs from English casual speech.",
+          },
+          {
+            id: "b2-l2-e2",
+            type: "multiple-choice",
+            question: "In fast speech, 'Nu știu' often becomes:",
+            options: [
+              { id: "a", text: "Nuu știu" },
+              { id: "b", text: "N-știu" },
+              { id: "c", text: "Nu-știu" },
+              { id: "d", text: "Știu nu" },
             ],
             correctAnswer: "b",
             explanation:
-              "Literally 'to cut leaves for dogs' — this idiom describes wasting time on pointless activities, since dogs don't eat leaves.",
+              "In connected speech, 'nu' before a consonant cluster often reduces to 'n-', giving 'n-știu'. This is very common in natural Romanian conversation.",
+          },
+          {
+            id: "b2-l2-e3",
+            type: "fill-blank",
+            question: "What type of question ends with rising intonation in Romanian? (yes/no or information)",
+            blankSentence: "A ___ question ends with rising intonation.",
+            correctAnswer: "yes/no",
+            explanation:
+              "Yes/no questions (requiring a da/nu answer) end with rising intonation. Information questions with 'ce, cine, când, unde' etc. use falling intonation like statements.",
           },
         ],
       },
       {
         id: "b2-l3",
-        title: "Conditional & Hypothetical",
+        title: "Conditional Perfect & Counterfactuals",
         type: "grammar",
-        estimatedMinutes: 30,
+        estimatedMinutes: 28,
         completed: false,
         sections: [
           {
-            title: "Conditional Mood",
+            title: "Forming the Conditional Perfect",
             content:
-              "Romanian uses the conditional-optative mood for hypothetical situations, polite requests, and wishes. It is formed with the auxiliary 'ar' + infinitive stem.",
+              "The conditional perfect expresses what would have happened under different circumstances. It is formed with 'ar fi' + past participle. This is the Romanian equivalent of 'would have + verb'.",
             examples: [
               {
-                romanian: "Aș vrea un ceai.",
-                phonetic: "[ash vryah oon chay]",
-                english: "I would like a tea. (polite request)",
+                romanian: "Aș fi venit dacă știam.",
+                phonetic: "[ash fee veh-NEET DAH-kuh SHTYAM]",
+                english: "I would have come if I had known.",
               },
               {
-                romanian: "Dacă aș putea, aș veni.",
-                phonetic: "[DAH-kuh ash poo-TYAH, ash veh-NEE]",
-                english: "If I could, I would come.",
+                romanian: "Ar fi câștigat dacă ar fi încercat.",
+                phonetic: "[ar fee kuh-SHTY-gaht DAH-kuh ar fee un-chehr-KAHT]",
+                english: "He would have won if he had tried.",
               },
               {
-                romanian: "Ar trebui să pleci.",
-                phonetic: "[ar TREH-boo-ee suh PLETCH]",
-                english: "You should leave.",
+                romanian: "Am fi plecat mai devreme.",
+                phonetic: "[am fee pleh-KAHT my deh-VREH-meh]",
+                english: "We would have left earlier.",
+              },
+            ],
+          },
+          {
+            title: "Counterfactual Conditionals",
+            content:
+              "Romanian uses 'dacă + past tense / imperfect' in the if-clause and 'conditional perfect' in the result clause. This mirrors English 'If I had…, I would have…' structures.",
+            examples: [
+              {
+                romanian: "Dacă studiasem, aș fi trecut examenul.",
+                phonetic: "[DAH-kuh stoo-dyAH-sem, ash fee treh-KOOT ex-AH-meh-nool]",
+                english: "If I had studied, I would have passed the exam.",
+              },
+              {
+                romanian: "Dacă era acasă, ar fi răspuns.",
+                phonetic: "[DAH-kuh YEH-rah ah-KAH-suh, ar fee ruhs-POONS]",
+                english: "If he had been home, he would have answered.",
+              },
+              {
+                romanian: "N-aș fi spus nimic dacă nu m-ai fi întrebat.",
+                phonetic: "[nash fee spoos NEE-meek DAH-kuh noo my fee un-treh-BAHT]",
+                english: "I wouldn't have said anything if you hadn't asked.",
+              },
+            ],
+          },
+          {
+            title: "Mixed Conditionals",
+            content:
+              "Sometimes the time frames in the two clauses differ — the condition is in the past but the result applies to the present. Romanian handles this flexibly.",
+            examples: [
+              {
+                romanian: "Dacă m-aș fi odihnit, nu aș fi obosit acum.",
+                phonetic: "[DAH-kuh mash fee o-deeh-NEET, noo ash fee o-bo-SEET ah-KOOM]",
+                english: "If I had rested, I wouldn't be tired now.",
+              },
+              {
+                romanian: "Dacă ar fi învățat, ar vorbi bine acum.",
+                phonetic: "[DAH-kuh ar fee un-vuh-TSAHT, ar vor-BEE BEE-neh ah-KOOM]",
+                english: "If he had studied, he would speak well now.",
+              },
+              {
+                romanian: "Aș fi mai înțelept dacă aș fi trăit mai mult.",
+                phonetic: "[ash fee my un-tseh-LEHPT DAH-kuh ash fee truh-EET my moolt]",
+                english: "I would be wiser if I had lived longer.",
               },
             ],
           },
@@ -4117,13 +4293,1408 @@ export const curriculum: Level[] = [
         exercises: [
           {
             id: "b2-l3-e1",
-            type: "fill-blank",
-            question:
-              "Complete the polite request: '___ vrea un ceai' (I would like a tea):",
-            blankSentence: "___ vrea un ceai",
-            correctAnswer: "Aș",
+            type: "multiple-choice",
+            question: "How is the conditional perfect formed in Romanian?",
+            options: [
+              { id: "a", text: "ar + infinitive" },
+              { id: "b", text: "să fi + past participle" },
+              { id: "c", text: "ar fi + past participle" },
+              { id: "d", text: "am + infinitive" },
+            ],
+            correctAnswer: "c",
             explanation:
-              "'Aș' is the conditional auxiliary for the first person singular. It combines with the infinitive stem: 'aș vrea' (I would want/like).",
+              "The conditional perfect is formed with 'ar fi' + past participle: 'aș fi venit' (I would have come), 'ar fi plecat' (he would have left).",
+          },
+          {
+            id: "b2-l3-e2",
+            type: "fill-blank",
+            question: "Complete: 'Dacă studiasem, ___ fi trecut examenul.'",
+            blankSentence: "Dacă studiasem, ___ fi trecut examenul.",
+            correctAnswer: "aș",
+            explanation:
+              "'Aș fi trecut' (I would have passed) — the conditional perfect for first person singular. The if-clause uses pluperfect; the result clause uses conditional perfect.",
+          },
+          {
+            id: "b2-l3-e3",
+            type: "multiple-choice",
+            question: "What does 'Dacă era acasă, ar fi răspuns.' mean?",
+            options: [
+              { id: "a", text: "If he is home, he will answer." },
+              { id: "b", text: "If he had been home, he would have answered." },
+              { id: "c", text: "When he is home, he answers." },
+              { id: "d", text: "He was home and he answered." },
+            ],
+            correctAnswer: "b",
+            explanation:
+              "This is a counterfactual — past condition + conditional perfect result. 'Era acasă' (imperfect = had been home) + 'ar fi răspuns' (would have answered).",
+          },
+        ],
+      },
+      {
+        id: "b2-l4",
+        title: "Idiomatic Expressions & Proverbs",
+        type: "grammar",
+        estimatedMinutes: 22,
+        completed: false,
+        sections: [
+          {
+            title: "Common Romanian Idioms",
+            content:
+              "Romanian idioms are deeply tied to rural life, Latin wit, and Slavic earthiness. Knowing them helps you understand humor and subtext in native speech and media.",
+            examples: [
+              {
+                romanian: "A da cu bâta-n baltă",
+                phonetic: "[ah dah koo BUH-tah un BAL-tuh]",
+                english: "To stir up trouble / say the wrong thing (lit. to hit the pond with a stick)",
+              },
+              {
+                romanian: "A tăia frunze la câini",
+                phonetic: "[ah tuh-YAH FROON-zeh lah KUY-nee]",
+                english: "To loaf around / do nothing useful (lit. to cut leaves for dogs)",
+              },
+              {
+                romanian: "A face muște",
+                phonetic: "[ah FAH-cheh MOOSH-teh]",
+                english: "To be bored stiff / killing time (lit. to make flies)",
+              },
+            ],
+          },
+          {
+            title: "Romanian Proverbs",
+            content:
+              "Proverbs (proverbe) are widely used in Romanian conversation and reveal cultural values. They are often earthy, pragmatic, and humorous.",
+            examples: [
+              {
+                romanian: "Capul face, capul trage.",
+                phonetic: "[KAH-pool FAH-cheh, KAH-pool TRAH-geh]",
+                english: "You reap what you sow. (lit. The head does, the head bears.)",
+              },
+              {
+                romanian: "Omul sfințește locul.",
+                phonetic: "[OH-mool sfin-TSEHSH-teh LO-kool]",
+                english: "A person makes the place. (it's the people that matter)",
+              },
+              {
+                romanian: "Vorba dulce mult aduce.",
+                phonetic: "[VOR-bah DOOL-cheh moolt ah-DOO-cheh]",
+                english: "Kind words bring much. (you catch more flies with honey)",
+              },
+            ],
+          },
+          {
+            title: "Body-Based Idioms",
+            content:
+              "Many Romanian idioms use body parts metaphorically, much like English. These are especially common in everyday colloquial speech.",
+            examples: [
+              {
+                romanian: "A-și băga nasul",
+                phonetic: "[ah-shee buh-GAH NAH-sool]",
+                english: "To stick one's nose in (to meddle)",
+              },
+              {
+                romanian: "A pierde capul",
+                phonetic: "[ah PYEHR-deh KAH-pool]",
+                english: "To lose one's head (to panic or fall in love)",
+              },
+              {
+                romanian: "A da mâna cu cineva",
+                phonetic: "[ah dah MUY-nah koo chee-NEH-vah]",
+                english: "To shake hands with someone",
+              },
+            ],
+          },
+        ],
+        exercises: [
+          {
+            id: "b2-l4-e1",
+            type: "multiple-choice",
+            question: "What does 'a tăia frunze la câini' mean?",
+            options: [
+              { id: "a", text: "To work very hard" },
+              { id: "b", text: "To waste time doing nothing useful" },
+              { id: "c", text: "To care for animals" },
+              { id: "d", text: "To chop vegetables" },
+            ],
+            correctAnswer: "b",
+            explanation:
+              "Literally 'to cut leaves for dogs' — dogs don't eat leaves, so the action is pointless. It means to idle or waste time.",
+          },
+          {
+            id: "b2-l4-e2",
+            type: "multiple-choice",
+            question: "Which proverb means 'it's the people that make a place special'?",
+            options: [
+              { id: "a", text: "Vorba dulce mult aduce." },
+              { id: "b", text: "Capul face, capul trage." },
+              { id: "c", text: "Omul sfințește locul." },
+              { id: "d", text: "A face muște." },
+            ],
+            correctAnswer: "c",
+            explanation:
+              "'Omul sfințește locul' literally means 'the person sanctifies the place' — it conveys that people give meaning and value to spaces.",
+          },
+          {
+            id: "b2-l4-e3",
+            type: "fill-blank",
+            question: "Complete the idiom: 'A-și băga ___' (to stick one's nose in / meddle)",
+            blankSentence: "A-și băga ___",
+            correctAnswer: "nasul",
+            explanation:
+              "'A-și băga nasul' (to stick one's nose in) is a common idiom for meddling in others' affairs, identical in concept to the English equivalent.",
+          },
+        ],
+      },
+      {
+        id: "b2-l5",
+        title: "Reported Speech & Sequence of Tenses",
+        type: "grammar",
+        estimatedMinutes: 26,
+        completed: false,
+        sections: [
+          {
+            title: "Direct vs. Indirect Speech",
+            content:
+              "Romanian reported speech uses 'că' (that) to introduce indirect statements, and 'să' for indirect commands. Unlike English, Romanian does not always backshift tenses in reported speech.",
+            examples: [
+              {
+                romanian: "El a spus: «Vin mâine.» → El a spus că vine mâine.",
+                phonetic: "[el ah spoos kuh VEE-neh MUY-neh]",
+                english: "He said: 'I'm coming tomorrow.' → He said (that) he's coming tomorrow.",
+              },
+              {
+                romanian: "Ea a întrebat dacă sunt acasă.",
+                phonetic: "[yah ah un-treh-BAHT DAH-kuh soont ah-KAH-suh]",
+                english: "She asked if I was home.",
+              },
+              {
+                romanian: "Mi-a cerut să-l ajut.",
+                phonetic: "[myah cheh-ROOT suh-l ah-ZHOOT]",
+                english: "He asked me to help him. (indirect command with 'să')",
+              },
+            ],
+          },
+          {
+            title: "Tense Backshifting",
+            content:
+              "While Romanian doesn't strictly require tense backshifting, it does occur in formal or literary contexts. Understanding both patterns — backshifted and non-backshifted — is important for B2 comprehension.",
+            examples: [
+              {
+                romanian: "A spus că va veni. / A spus că o să vină.",
+                phonetic: "[ah spoos kuh vah veh-NEE / ah spoos kuh oh suh VEE-nuh]",
+                english: "He said he would come. (both forms acceptable)",
+              },
+              {
+                romanian: "Mi-a zis că era obosit.",
+                phonetic: "[myah zees kuh YEH-rah o-bo-SEET]",
+                english: "He told me he was tired.",
+              },
+              {
+                romanian: "Credea că am terminat deja.",
+                phonetic: "[KREH-dyah kuh am tehr-mee-NAHT DEH-zhah]",
+                english: "She thought I had already finished.",
+              },
+            ],
+          },
+          {
+            title: "Reporting Questions & Commands",
+            content:
+              "Indirect questions use 'dacă' (yes/no) or question words. Indirect commands always use 'să'. These structures are essential for accurate B2-level communication.",
+            examples: [
+              {
+                romanian: "M-a întrebat unde locuiesc.",
+                phonetic: "[mah un-treh-BAHT OON-deh lo-kwee-ESK]",
+                english: "He asked me where I live.",
+              },
+              {
+                romanian: "Ne-a rugat să venim devreme.",
+                phonetic: "[nyah roo-GAHT suh veh-NEEM deh-VREH-meh]",
+                english: "She asked us to come early.",
+              },
+              {
+                romanian: "L-a sfătuit să nu bea mult.",
+                phonetic: "[lah sfuh-TWEET suh noo byah moolt]",
+                english: "He advised him not to drink much.",
+              },
+            ],
+          },
+        ],
+        exercises: [
+          {
+            id: "b2-l5-e1",
+            type: "multiple-choice",
+            question: "How do you report an indirect command in Romanian?",
+            options: [
+              { id: "a", text: "Using 'că' + indicative" },
+              { id: "b", text: "Using 'dacă' + subjunctive" },
+              { id: "c", text: "Using 'să' + subjunctive verb" },
+              { id: "d", text: "Using 'care' + infinitive" },
+            ],
+            correctAnswer: "c",
+            explanation:
+              "Indirect commands in Romanian use 'să' + subjunctive: 'Mi-a cerut să-l ajut' (He asked me to help him). The 'să' clause replaces the direct imperative.",
+          },
+          {
+            id: "b2-l5-e2",
+            type: "fill-blank",
+            question: "Report this: 'El a spus: Vin mâine.' → El a spus că ___ mâine.",
+            blankSentence: "El a spus că ___ mâine.",
+            correctAnswer: "vine",
+            explanation:
+              "In Romanian indirect speech, the verb stays in the present tense: 'vine' (he's coming). Unlike English, Romanian doesn't strictly backshift 'comes' to 'came'.",
+          },
+          {
+            id: "b2-l5-e3",
+            type: "multiple-choice",
+            question: "Which conjunction introduces indirect yes/no questions?",
+            options: [
+              { id: "a", text: "că" },
+              { id: "b", text: "să" },
+              { id: "c", text: "dacă" },
+              { id: "d", text: "care" },
+            ],
+            correctAnswer: "c",
+            explanation:
+              "'Dacă' (if/whether) introduces indirect yes/no questions: 'M-a întrebat dacă sunt acasă' (He asked if I was home). 'Că' is for statements, 'să' for commands.",
+          },
+        ],
+      },
+      {
+        id: "b2-l6",
+        title: "Advanced Noun Cases: Genitive & Vocative",
+        type: "grammar",
+        estimatedMinutes: 26,
+        completed: false,
+        sections: [
+          {
+            title: "Genitive Case: Possession & Relation",
+            content:
+              "The genitive expresses possession, belonging, and various relationships between nouns. It is formed differently for definite and indefinite nouns and has special forms for each gender.",
+            examples: [
+              {
+                romanian: "Casa prietenului meu",
+                phonetic: "[KAH-sah pryeh-TEH-noo-loo MYEW]",
+                english: "My friend's house (masc. definite genitive)",
+              },
+              {
+                romanian: "Cartea profesoarei",
+                phonetic: "[KAR-tyah pro-feh-SOH-ah-reh]",
+                english: "The teacher's book (fem. definite genitive)",
+              },
+              {
+                romanian: "Reședința unui om simplu",
+                phonetic: "[reh-SHEH-dints-ah OO-noo-ee om SEEM-ploo]",
+                english: "The residence of a simple man (masc. indef. genitive)",
+              },
+            ],
+          },
+          {
+            title: "Genitive with Prepositions",
+            content:
+              "Many Romanian prepositions require the genitive case. The most common are 'asupra' (over/about), 'împotriva' (against), 'înaintea' (before), 'deasupra' (above), 'dinaintea' (in front of).",
+            examples: [
+              {
+                romanian: "Împotriva vântului",
+                phonetic: "[um-POH-tree-vah VUN-too-loo]",
+                english: "Against the wind",
+              },
+              {
+                romanian: "Deasupra casei",
+                phonetic: "[dyah-SOO-prah KAH-seh]",
+                english: "Above the house",
+              },
+              {
+                romanian: "Înaintea ședinței",
+                phonetic: "[un-AY-nyeh-ah sheh-DINTS-eh]",
+                english: "Before the meeting",
+              },
+            ],
+          },
+          {
+            title: "Vocative Case: Direct Address",
+            content:
+              "The vocative is used when directly addressing someone. It has distinct forms in Romanian, especially for names and familiar terms. It is marked by a specific ending or stress shift.",
+            examples: [
+              {
+                romanian: "Mamă, vino aici!",
+                phonetic: "[MAH-muh, VEE-no ah-EECH]",
+                english: "Mom, come here! (vocative of 'mamă')",
+              },
+              {
+                romanian: "Ioane, ești acasă?",
+                phonetic: "[YOH-ah-neh, yeshty ah-KAH-suh]",
+                english: "Ioan, are you home? (vocative of name 'Ioan')",
+              },
+              {
+                romanian: "Doamnă doctor, vă rog!",
+                phonetic: "[DWAHM-nuh dok-TOR, vuh rog]",
+                english: "Madam doctor, please! (formal vocative)",
+              },
+            ],
+          },
+        ],
+        exercises: [
+          {
+            id: "b2-l6-e1",
+            type: "multiple-choice",
+            question: "Which preposition requires the genitive case?",
+            options: [
+              { id: "a", text: "la" },
+              { id: "b", text: "cu" },
+              { id: "c", text: "împotriva" },
+              { id: "d", text: "prin" },
+            ],
+            correctAnswer: "c",
+            explanation:
+              "'Împotriva' (against) is a preposition that requires the genitive case: 'împotriva vântului' (against the wind). 'La', 'cu', 'prin' take accusative.",
+          },
+          {
+            id: "b2-l6-e2",
+            type: "fill-blank",
+            question: "Complete: '___ casei' (above the house) using 'deasupra'",
+            blankSentence: "___ casei",
+            correctAnswer: "Deasupra",
+            explanation:
+              "'Deasupra' (above/on top of) governs the genitive: 'deasupra casei' (above the house). 'Casei' is the genitive definite form of 'casă'.",
+          },
+          {
+            id: "b2-l6-e3",
+            type: "multiple-choice",
+            question: "What is the vocative used for in Romanian?",
+            options: [
+              { id: "a", text: "Expressing possession" },
+              { id: "b", text: "Directly addressing a person" },
+              { id: "c", text: "Indicating the subject of a sentence" },
+              { id: "d", text: "Showing indirect objects" },
+            ],
+            correctAnswer: "b",
+            explanation:
+              "The vocative case is used when directly calling or addressing someone: 'Mamă!' (Mom!), 'Ioane!' (Ioan!). It often has a distinct ending from the nominative.",
+          },
+        ],
+      },
+      {
+        id: "b2-l7",
+        title: "Passive Voice: Advanced Constructions",
+        type: "grammar",
+        estimatedMinutes: 24,
+        completed: false,
+        sections: [
+          {
+            title: "Passive with 'a fi' + Past Participle",
+            content:
+              "Romanian forms the passive with the verb 'a fi' (to be) + past participle, which must agree in gender and number with the subject. The agent is introduced by 'de către' (by).",
+            examples: [
+              {
+                romanian: "Cartea a fost scrisă de Eminescu.",
+                phonetic: "[KAR-tyah ah fost SKREE-suh deh kuh-TREH eh-mee-NES-koo]",
+                english: "The book was written by Eminescu.",
+              },
+              {
+                romanian: "Legea a fost votată de parlament.",
+                phonetic: "[LEH-gyah ah fost vo-TAH-tuh deh par-lah-MENT]",
+                english: "The law was voted on by parliament.",
+              },
+              {
+                romanian: "Mesajul a fost primit.",
+                phonetic: "[meh-SAH-zhool ah fost pree-MEET]",
+                english: "The message was received.",
+              },
+            ],
+          },
+          {
+            title: "Reflexive Passive",
+            content:
+              "Romanian commonly uses reflexive constructions as an alternative passive, especially when the agent is unspecified. This is often more natural than the 'a fi' passive in spoken language.",
+            examples: [
+              {
+                romanian: "Se vorbește română aici.",
+                phonetic: "[seh vor-BESH-teh ro-MUH-nuh ah-EECH]",
+                english: "Romanian is spoken here.",
+              },
+              {
+                romanian: "S-au deschis ușile.",
+                phonetic: "[sow des-KEES OO-shee-leh]",
+                english: "The doors were opened.",
+              },
+              {
+                romanian: "Se știe că e adevărat.",
+                phonetic: "[seh SHTYEH kuh yeh ah-deh-vuh-RAHT]",
+                english: "It is known that it's true.",
+              },
+            ],
+          },
+          {
+            title: "Impersonal Passive Constructions",
+            content:
+              "Impersonal passives with 'se' are extremely frequent in Romanian for instructions, signs, and general statements. They are similar to French 'on' or German 'man' constructions.",
+            examples: [
+              {
+                romanian: "Nu se fumează.",
+                phonetic: "[noo seh foo-MYAH-zuh]",
+                english: "No smoking. / Smoking is not permitted.",
+              },
+              {
+                romanian: "Se spune că urmează ploaie.",
+                phonetic: "[seh SPOO-neh kuh oor-MYAH-zuh PLOYEH]",
+                english: "It is said that rain is coming.",
+              },
+              {
+                romanian: "Se acceptă plata cu cardul.",
+                phonetic: "[seh ak-CHEP-tuh PLAH-tah koo KAR-dool]",
+                english: "Card payment is accepted.",
+              },
+            ],
+          },
+        ],
+        exercises: [
+          {
+            id: "b2-l7-e1",
+            type: "multiple-choice",
+            question: "How is the agent expressed in Romanian passive voice?",
+            options: [
+              { id: "a", text: "cu (with)" },
+              { id: "b", text: "de către (by)" },
+              { id: "c", text: "prin (through)" },
+              { id: "d", text: "la (at)" },
+            ],
+            correctAnswer: "b",
+            explanation:
+              "The agent in Romanian passive constructions is introduced by 'de către': 'scrisă de către Eminescu' (written by Eminescu). This mirrors French 'par' and Italian 'da'.",
+          },
+          {
+            id: "b2-l7-e2",
+            type: "fill-blank",
+            question: "Complete: '___ vorbește română aici.' (Romanian is spoken here)",
+            blankSentence: "___ vorbește română aici.",
+            correctAnswer: "Se",
+            explanation:
+              "The reflexive passive uses 'se' + third person verb: 'Se vorbește română' (Romanian is spoken). This is more common in speech than the 'a fi' passive.",
+          },
+          {
+            id: "b2-l7-e3",
+            type: "multiple-choice",
+            question: "What does 'Nu se fumează.' mean?",
+            options: [
+              { id: "a", text: "I don't smoke." },
+              { id: "b", text: "No smoking. (smoking is not permitted)" },
+              { id: "c", text: "He doesn't smoke here." },
+              { id: "d", text: "Smoking is allowed." },
+            ],
+            correctAnswer: "b",
+            explanation:
+              "'Nu se fumează' is an impersonal reflexive passive, used on signs and in instructions. It means 'smoking is not done here' = 'No smoking.' Very common in public spaces.",
+          },
+        ],
+      },
+      {
+        id: "b2-l8",
+        title: "Pronunciation: Dialect Awareness & Register",
+        type: "pronunciation",
+        estimatedMinutes: 18,
+        completed: false,
+        sections: [
+          {
+            title: "Moldovan vs. Muntenian Accent",
+            content:
+              "Romanian has regional accents, the most distinct being Moldovan (northeastern) and Muntenian (southern, around Bucharest, basis of standard Romanian). Moldovan speakers typically devoice final consonants and have different vowel qualities.",
+            examples: [
+              {
+                romanian: "Standard: «bine» vs. Moldovan: «ghine»",
+                phonetic: "[BEE-neh] vs. [GHEE-neh]",
+                english: "Good — the Moldovan variant palatalizes 'b' to 'gh' before 'i'",
+              },
+              {
+                romanian: "Standard: «fată» vs. Moldovan: «fatî»",
+                phonetic: "[FAH-tuh] vs. [FAH-tuh (with central vowel ɨ)]",
+                english: "Girl — the final 'ă' often centralizes in Moldovan speech",
+              },
+              {
+                romanian: "Standard: «ce faci?» vs. Transylvanian: «ce faci?» (slower, clearer)",
+                phonetic: "[cheh FAHCH] vs. [tseh FAH-chee]",
+                english: "How are you? — Transylvanian speech is generally clearer and slower",
+              },
+            ],
+          },
+          {
+            title: "Formal vs. Informal Register",
+            content:
+              "Romanian has distinct formal and informal registers that affect not just vocabulary but also pronunciation clarity. Informal speech contracts and blends words; formal speech enunciates more fully.",
+            examples: [
+              {
+                romanian: "Formal: «Bună ziua.» / Informal: «Salut!»",
+                phonetic: "[BOO-nuh ZEE-wah] / [sah-LOOT]",
+                english: "Good day. / Hi! — register affects word choice and formality",
+              },
+              {
+                romanian: "Formal: «dumneavoastră» / Informal: «tu/voi»",
+                phonetic: "[doom-nyah-VWAH-struh] / [too / voy]",
+                english: "You (formal) / you (informal) — formal you is always fully enunciated",
+              },
+              {
+                romanian: "Formal: «vă rog» / Informal: «te rog»",
+                phonetic: "[vuh rog] / [teh rog]",
+                english: "Please (formal) / please (informal)",
+              },
+            ],
+          },
+          {
+            title: "Media & Neutral Standard Romanian",
+            content:
+              "News broadcasts, official speeches, and educated speech aim for a neutral Muntenian standard. Exposure to Romanian media (TVR, Digi24, ProTV) will train your ear for this prestige variety.",
+            examples: [
+              {
+                romanian: "Știrile de seară (evening news)",
+                phonetic: "[SHTY-ree-leh deh SYAH-ruh]",
+                english: "Evening news — standard, clear pronunciation",
+              },
+              {
+                romanian: "Bună seara, stimați telespectatori.",
+                phonetic: "[BOO-nuh SYAH-rah, stee-MAHTS teh-leh-spek-tah-TOR]",
+                english: "Good evening, dear viewers. (TV news opening, formal register)",
+              },
+              {
+                romanian: "Conform surselor oficiale...",
+                phonetic: "[kon-FORM SOOR-seh-lor o-fee-CHYAH-leh]",
+                english: "According to official sources... (formal journalistic phrase)",
+              },
+            ],
+          },
+        ],
+        exercises: [
+          {
+            id: "b2-l8-e1",
+            type: "multiple-choice",
+            question: "Which dialect is the basis of standard Romanian?",
+            options: [
+              { id: "a", text: "Moldovan (northeastern)" },
+              { id: "b", text: "Transylvanian (central/western)" },
+              { id: "c", text: "Muntenian (southern, Bucharest area)" },
+              { id: "d", text: "Oltenian (southwestern)" },
+            ],
+            correctAnswer: "c",
+            explanation:
+              "Standard Romanian is based on the Muntenian dialect of the Bucharest area. It is used in media, education, and official contexts across Romania.",
+          },
+          {
+            id: "b2-l8-e2",
+            type: "multiple-choice",
+            question: "What is the formal way to say 'you' in Romanian?",
+            options: [
+              { id: "a", text: "tu" },
+              { id: "b", text: "voi" },
+              { id: "c", text: "ei" },
+              { id: "d", text: "dumneavoastră" },
+            ],
+            correctAnswer: "d",
+            explanation:
+              "'Dumneavoastră' is the formal second-person pronoun, used with strangers, elders, and in professional settings. 'Tu' is informal singular, 'voi' is informal plural.",
+          },
+          {
+            id: "b2-l8-e3",
+            type: "fill-blank",
+            question: "The formal word for 'please' (to one person formally) is:",
+            blankSentence: "___ rog (formal please)",
+            correctAnswer: "vă",
+            explanation:
+              "'Vă rog' is the formal version of 'please', used with 'dumneavoastră' contexts. 'Te rog' is the informal equivalent used with 'tu'.",
+          },
+        ],
+      },
+      {
+        id: "b2-l9",
+        title: "Nominalization & Abstract Language",
+        type: "grammar",
+        estimatedMinutes: 24,
+        completed: false,
+        sections: [
+          {
+            title: "Forming Nouns from Verbs",
+            content:
+              "Romanian regularly forms abstract nouns from verbs using suffixes like '-are/-ere/-ire' (gerund-like nouns), '-ție/-siune', and '-ment'. These nominalizations are essential for formal writing and speech.",
+            examples: [
+              {
+                romanian: "a lucra → lucrare (a work, an assignment)",
+                phonetic: "[ah loo-KRAH → loo-KRAH-reh]",
+                english: "to work → work/assignment (nominalization with -are)",
+              },
+              {
+                romanian: "a comunica → comunicare (communication)",
+                phonetic: "[ah ko-moo-nee-KAH → ko-moo-nee-KAH-reh]",
+                english: "to communicate → communication",
+              },
+              {
+                romanian: "a guverna → guvernare (governance)",
+                phonetic: "[ah goo-vehr-NAH → goo-vehr-NAH-reh]",
+                english: "to govern → governance/governing",
+              },
+            ],
+          },
+          {
+            title: "Forming Nouns from Adjectives",
+            content:
+              "Abstract qualities can be expressed as nouns using suffixes like '-itate', '-ime', '-ețe', '-ură'. These forms appear constantly in formal texts, journalism, and academic language.",
+            examples: [
+              {
+                romanian: "frumos → frumusețe (beauty)",
+                phonetic: "[froo-MOS → froo-moo-SEH-tseh]",
+                english: "beautiful → beauty",
+              },
+              {
+                romanian: "rapid → rapiditate (speed/rapidity)",
+                phonetic: "[RAH-peed → rah-pee-dee-TAH-teh]",
+                english: "fast → speed/rapidity",
+              },
+              {
+                romanian: "tânăr → tinerețe (youth)",
+                phonetic: "[TUH-nuhr → tee-neh-REH-tseh]",
+                english: "young → youth",
+              },
+            ],
+          },
+          {
+            title: "Abstract Language in Context",
+            content:
+              "At B2, you need to discuss abstract topics — politics, culture, philosophy. Using nominalizations and abstract vocabulary demonstrates advanced competence.",
+            examples: [
+              {
+                romanian: "Colaborarea dintre state este esențială.",
+                phonetic: "[ko-lah-bo-RAH-reh deen-treh STAH-teh yeh-steh eh-sents-YAH-luh]",
+                english: "Cooperation between states is essential.",
+              },
+              {
+                romanian: "Libertatea de exprimare este un drept fundamental.",
+                phonetic: "[lee-behr-TAH-tyah deh ex-pree-MAH-reh yeh-steh oon drept foon-dah-men-TAHL]",
+                english: "Freedom of expression is a fundamental right.",
+              },
+              {
+                romanian: "Creșterea economică depinde de stabilitate.",
+                phonetic: "[krehsh-TEH-reh-ah eh-ko-NO-mee-kuh deh-PEEN-deh deh stah-bee-lee-TAH-teh]",
+                english: "Economic growth depends on stability.",
+              },
+            ],
+          },
+        ],
+        exercises: [
+          {
+            id: "b2-l9-e1",
+            type: "multiple-choice",
+            question: "What suffix is commonly used to nominalize Romanian verbs?",
+            options: [
+              { id: "a", text: "-itate" },
+              { id: "b", text: "-are/-ere/-ire" },
+              { id: "c", text: "-ețe" },
+              { id: "d", text: "-esc" },
+            ],
+            correctAnswer: "b",
+            explanation:
+              "Verbs in Romanian are nominalized with '-are' (first conjugation), '-ere' (second), '-ire' (fourth): 'lucrare' (work), 'cunoaștere' (knowledge), 'iubire' (love).",
+          },
+          {
+            id: "b2-l9-e2",
+            type: "fill-blank",
+            question: "Nominalize 'a comunica': 'a comunica → ___'",
+            blankSentence: "a comunica → ___",
+            correctAnswer: "comunicare",
+            explanation:
+              "'A comunica' → 'comunicare' (communication). The -a verb nominalization adds '-re' to the infinitive stem. These forms are used as nouns in Romanian.",
+          },
+          {
+            id: "b2-l9-e3",
+            type: "multiple-choice",
+            question: "What does 'Libertatea de exprimare' mean?",
+            options: [
+              { id: "a", text: "The freedom to travel" },
+              { id: "b", text: "Freedom of expression" },
+              { id: "c", text: "The right to vote" },
+              { id: "d", text: "Freedom of movement" },
+            ],
+            correctAnswer: "b",
+            explanation:
+              "'Libertatea' = freedom/liberty, 'de exprimare' = of expression (nominalized from 'a se exprima'). This phrase appears constantly in legal, political, and journalistic Romanian.",
+          },
+        ],
+      },
+      {
+        id: "b2-l10",
+        title: "Discourse Markers & Connectors",
+        type: "grammar",
+        estimatedMinutes: 22,
+        completed: false,
+        sections: [
+          {
+            title: "Additive & Contrastive Connectors",
+            content:
+              "At B2, you need discourse markers to structure arguments, add information, and contrast ideas. Romanian has rich connective vocabulary for both spoken and written discourse.",
+            examples: [
+              {
+                romanian: "Pe de o parte... pe de altă parte...",
+                phonetic: "[peh deh oh PAR-teh... peh deh AL-tuh PAR-teh]",
+                english: "On the one hand... on the other hand...",
+              },
+              {
+                romanian: "Cu toate acestea, situația rămâne dificilă.",
+                phonetic: "[koo TWAH-teh ah-CHES-tyah, see-TWAH-tsyah ruh-MUY-neh dee-fee-CHEE-luh]",
+                english: "Nevertheless, the situation remains difficult.",
+              },
+              {
+                romanian: "Ba mai mult decât atât...",
+                phonetic: "[bah my moolt deh-KUT ah-TUT]",
+                english: "What's more... / Furthermore...",
+              },
+            ],
+          },
+          {
+            title: "Causal & Consecutive Connectors",
+            content:
+              "Expressing cause and effect at B2 requires precise connectors. Romanian distinguishes between 'pentru că' (because, simple cause) and 'deoarece/întrucât' (formal, more complex reasoning).",
+            examples: [
+              {
+                romanian: "Deoarece nu a venit, ședința a fost anulată.",
+                phonetic: "[dyoh-AH-reh-cheh noo ah veh-NEET, sheh-DINTS-ah ah fost ah-noo-LAH-tuh]",
+                english: "Since he didn't come, the meeting was cancelled.",
+              },
+              {
+                romanian: "Prin urmare, trebuie să acționăm.",
+                phonetic: "[preen OOR-mah-reh, TREH-boo-yeh suh ak-tsyo-NUHM]",
+                english: "Therefore, we must act.",
+              },
+              {
+                romanian: "Astfel, am ajuns la concluzie.",
+                phonetic: "[AHT-fel, am ah-ZHOONSSS lah kon-KLOO-zyeh]",
+                english: "Thus, we reached a conclusion.",
+              },
+            ],
+          },
+          {
+            title: "Reformulation & Emphasis",
+            content:
+              "Reformulating ideas and emphasizing key points are advanced discourse skills. These markers help speakers clarify, rephrase, and highlight in both formal and informal contexts.",
+            examples: [
+              {
+                romanian: "Altfel spus / Cu alte cuvinte...",
+                phonetic: "[AL-tfel spoos / koo AL-teh koo-VEEN-teh]",
+                english: "In other words... / Put differently...",
+              },
+              {
+                romanian: "Ceea ce vreau să spun este că...",
+                phonetic: "[CHEH-ah cheh VRYOW suh spoon YEH-steh kuh]",
+                english: "What I mean to say is that...",
+              },
+              {
+                romanian: "Mai ales / În special...",
+                phonetic: "[my ah-LES / un speh-CHYAHL]",
+                english: "Above all / In particular...",
+              },
+            ],
+          },
+        ],
+        exercises: [
+          {
+            id: "b2-l10-e1",
+            type: "multiple-choice",
+            question: "Which connector means 'therefore' / 'as a result' in formal Romanian?",
+            options: [
+              { id: "a", text: "deoarece" },
+              { id: "b", text: "prin urmare" },
+              { id: "c", text: "pe de altă parte" },
+              { id: "d", text: "cu toate acestea" },
+            ],
+            correctAnswer: "b",
+            explanation:
+              "'Prin urmare' means 'therefore' or 'as a result' — it introduces a consequence. 'Deoarece' = because (cause); 'cu toate acestea' = nevertheless (contrast).",
+          },
+          {
+            id: "b2-l10-e2",
+            type: "fill-blank",
+            question: "Complete: '___ spus, nu este posibil.' (In other words, it's not possible.)",
+            blankSentence: "___ spus, nu este posibil.",
+            correctAnswer: "Altfel",
+            explanation:
+              "'Altfel spus' (otherwise said / in other words) is a reformulation marker. It introduces a rephrasing or clarification of what was just stated.",
+          },
+          {
+            id: "b2-l10-e3",
+            type: "multiple-choice",
+            question: "What does 'Cu toate acestea' mean?",
+            options: [
+              { id: "a", text: "Because of this" },
+              { id: "b", text: "In addition to this" },
+              { id: "c", text: "Nevertheless / Despite all this" },
+              { id: "d", text: "In other words" },
+            ],
+            correctAnswer: "c",
+            explanation:
+              "'Cu toate acestea' = 'with all these things' = nevertheless / despite all this. It introduces a contrastive or concessive statement, equivalent to 'however' in formal English.",
+          },
+        ],
+      },
+      {
+        id: "b2-l11",
+        title: "Verb Aspect: Imperfective vs. Perfective",
+        type: "grammar",
+        estimatedMinutes: 24,
+        completed: false,
+        sections: [
+          {
+            title: "Understanding Verbal Aspect",
+            content:
+              "Romanian has an aspectual system — verbs can express completed (perfective) or ongoing/repeated (imperfective) actions. The perfect compus and pluperfect are perfective; the imperfect is imperfective. Aspect affects both meaning and narrative style.",
+            examples: [
+              {
+                romanian: "Citeam cartea. (ongoing, imperfective)",
+                phonetic: "[chee-TYAM KAR-tyah]",
+                english: "I was reading the book. (action in progress)",
+              },
+              {
+                romanian: "Am citit cartea. (completed, perfective)",
+                phonetic: "[am chee-TEET KAR-tyah]",
+                english: "I read/have read the book. (completed action)",
+              },
+              {
+                romanian: "Mergea la muncă în fiecare zi. (habitual)",
+                phonetic: "[MEHR-gyah lah MOON-kuh un FYEH-kah-reh zee]",
+                english: "He used to go to work every day. (habitual past)",
+              },
+            ],
+          },
+          {
+            title: "Aspectual Pairs in Romanian",
+            content:
+              "Some Romanian verbs exist in aspectual pairs — one form for ongoing action and another for momentary/completed action. Understanding these contrasts sharpens your past tense accuracy.",
+            examples: [
+              {
+                romanian: "a dormi (sleep, ongoing) vs. a adormi (fall asleep, momentary)",
+                phonetic: "[ah dor-MEE] vs. [ah ah-dor-MEE]",
+                english: "to sleep (ongoing) vs. to fall asleep (onset, perfective)",
+              },
+              {
+                romanian: "a sta (to stay/stand) vs. a se opri (to stop)",
+                phonetic: "[ah stah] vs. [ah seh op-REE]",
+                english: "to be standing vs. to come to a stop",
+              },
+              {
+                romanian: "a ști (to know) vs. a afla (to find out)",
+                phonetic: "[ah SHTY] vs. [ah af-LAH]",
+                english: "to know (state) vs. to find out / learn (event)",
+              },
+            ],
+          },
+          {
+            title: "Narrative Aspect: Setting vs. Foreground",
+            content:
+              "In Romanian storytelling and narrative, the imperfect provides background/setting, while the perfect compus advances the main storyline. This distinction is key for B2 reading comprehension.",
+            examples: [
+              {
+                romanian: "Era o zi frumoasă. Mergeam pe stradă când am văzut-o.",
+                phonetic: "[YEH-rah oh zee froo-MWAH-suh. Mehr-GYAM peh STRAH-duh kund am vuh-ZOOT-oh]",
+                english: "It was a beautiful day. I was walking down the street when I saw her.",
+              },
+              {
+                romanian: "Ploua afară, dar el a ieșit totuși.",
+                phonetic: "[PLOH-wah ah-FAH-ruh, dar yel ah yeh-SHEET to-TOOSH]",
+                english: "It was raining outside, but he went out anyway.",
+              },
+              {
+                romanian: "Vorbea la telefon când a intrat directorul.",
+                phonetic: "[VOR-byah lah teh-leh-FON kund ah een-TRAHT dee-rec-TO-rool]",
+                english: "He was on the phone when the director walked in.",
+              },
+            ],
+          },
+        ],
+        exercises: [
+          {
+            id: "b2-l11-e1",
+            type: "multiple-choice",
+            question: "Which sentence describes a completed past action (perfective)?",
+            options: [
+              { id: "a", text: "Citeam cartea." },
+              { id: "b", text: "Mergea la muncă zilnic." },
+              { id: "c", text: "Am citit cartea." },
+              { id: "d", text: "Vorbea la telefon." },
+            ],
+            correctAnswer: "c",
+            explanation:
+              "'Am citit cartea' uses the perfect compus, which is perfective — it marks a completed action. The imperfect forms (citeam, mergea, vorbea) are imperfective.",
+          },
+          {
+            id: "b2-l11-e2",
+            type: "fill-blank",
+            question: "Complete the narrative: 'Era o zi frumoasă. ___ pe stradă când am văzut-o.'",
+            blankSentence: "Era o zi frumoasă. ___ pe stradă când am văzut-o.",
+            correctAnswer: "Mergeam",
+            explanation:
+              "'Mergeam' (imperfect, I was walking) sets the background scene. The perfect compus 'am văzut-o' (I saw her) advances the story. Imperfect = setting, perfect compus = event.",
+          },
+          {
+            id: "b2-l11-e3",
+            type: "multiple-choice",
+            question: "What is the aspectual difference between 'a ști' and 'a afla'?",
+            options: [
+              { id: "a", text: "Both mean the same thing" },
+              { id: "b", text: "'A ști' = state of knowing; 'a afla' = to find out (event)" },
+              { id: "c", text: "'A ști' = to find out; 'a afla' = to already know" },
+              { id: "d", text: "They differ only in register, not aspect" },
+            ],
+            correctAnswer: "b",
+            explanation:
+              "'A ști' = to know (ongoing state, imperfective), 'a afla' = to find out / learn (momentary event, perfective onset). This stative vs. achievement distinction is crucial for accurate use.",
+          },
+        ],
+      },
+      {
+        id: "b2-l12",
+        title: "Complex Sentence Structures",
+        type: "grammar",
+        estimatedMinutes: 26,
+        completed: false,
+        sections: [
+          {
+            title: "Relative Clauses: 'care', 'pe care', 'al cărui'",
+            content:
+              "Romanian relative clauses use 'care' (who/which), but the form changes depending on case. 'Pe care' is used for direct objects. 'Al cărui / a cărei / ai căror' are possessive relative forms.",
+            examples: [
+              {
+                romanian: "Omul care a venit este prietenul meu.",
+                phonetic: "[OH-mool KAH-reh ah veh-NEET yeh-steh pryeh-TEH-nool MYEW]",
+                english: "The man who came is my friend. (nominative relative)",
+              },
+              {
+                romanian: "Cartea pe care o citesc este interesantă.",
+                phonetic: "[KAR-tyah peh KAH-reh oh chee-TESK yeh-steh een-teh-reh-SAHN-tuh]",
+                english: "The book that I am reading is interesting. (accusative relative)",
+              },
+              {
+                romanian: "Femeia al cărei fiu a câștigat",
+                phonetic: "[feh-MYAH al kuh-REY fyoo ah kuh-SHTY-gaht]",
+                english: "The woman whose son won (possessive relative)",
+              },
+            ],
+          },
+          {
+            title: "Concessive Clauses",
+            content:
+              "Concessive clauses express contrast or unexpected outcomes. Romanian uses 'deși' (although), 'cu toate că' (even though), 'chiar dacă' (even if) to introduce them.",
+            examples: [
+              {
+                romanian: "Deși era târziu, a continuat să lucreze.",
+                phonetic: "[deh-SHEE YEH-rah TUR-zyoo, ah kon-tee-NWAT suh loo-KREH-zeh]",
+                english: "Although it was late, he continued to work.",
+              },
+              {
+                romanian: "Cu toate că plouă, mergem.",
+                phonetic: "[koo TWAH-teh kuh PLOH-wuh, MEHR-gem]",
+                english: "Even though it's raining, we're going.",
+              },
+              {
+                romanian: "Chiar dacă ai dreptate, nu poți forța.",
+                phonetic: "[kyar DAH-kuh ay drep-TAH-teh, noo POTSTY FOR-tsah]",
+                english: "Even if you're right, you can't force it.",
+              },
+            ],
+          },
+          {
+            title: "Purpose & Result Clauses",
+            content:
+              "Purpose clauses answer 'why' or 'for what reason'. Result clauses describe outcomes. Romanian uses 'ca să' / 'pentru ca să' (purpose) and 'încât' / 'astfel încât' (result).",
+            examples: [
+              {
+                romanian: "Am venit ca să te văd.",
+                phonetic: "[am veh-NEET kah suh teh vuhd]",
+                english: "I came in order to see you. (purpose)",
+              },
+              {
+                romanian: "Era atât de obosit, încât nu putea vorbi.",
+                phonetic: "[YEH-rah ah-TUT deh o-bo-SEET, un-KUT noo poo-TYAH vor-BEE]",
+                english: "He was so tired that he couldn't speak. (result)",
+              },
+              {
+                romanian: "Studiez astfel încât să reușesc.",
+                phonetic: "[stoo-DYEZ AHT-fel un-KUT suh reh-oo-SHESK]",
+                english: "I study so that I may succeed.",
+              },
+            ],
+          },
+        ],
+        exercises: [
+          {
+            id: "b2-l12-e1",
+            type: "multiple-choice",
+            question: "Which form of the relative pronoun is used for direct objects?",
+            options: [
+              { id: "a", text: "care" },
+              { id: "b", text: "pe care" },
+              { id: "c", text: "al cărui" },
+              { id: "d", text: "la care" },
+            ],
+            correctAnswer: "b",
+            explanation:
+              "'Pe care' is the accusative form of the relative pronoun, used when the relative pronoun is the direct object: 'Cartea pe care o citesc' (The book that I'm reading).",
+          },
+          {
+            id: "b2-l12-e2",
+            type: "fill-blank",
+            question: "Complete the concessive: '___ era târziu, a continuat.' (Although it was late, he continued.)",
+            blankSentence: "___ era târziu, a continuat.",
+            correctAnswer: "Deși",
+            explanation:
+              "'Deși' (although/even though) introduces concessive clauses. It's followed by the indicative mood. Alternative: 'Cu toate că' is slightly more formal.",
+          },
+          {
+            id: "b2-l12-e3",
+            type: "multiple-choice",
+            question: "What does 'Am venit ca să te văd.' express?",
+            options: [
+              { id: "a", text: "A result" },
+              { id: "b", text: "A condition" },
+              { id: "c", text: "A purpose" },
+              { id: "d", text: "A concession" },
+            ],
+            correctAnswer: "c",
+            explanation:
+              "'Ca să' introduces a purpose clause — 'I came in order to see you'. Purpose answers 'why'. 'Ca să' + subjunctive is the standard structure for expressing purpose in Romanian.",
+          },
+        ],
+      },
+      {
+        id: "b2-l13",
+        title: "Romanian Media & Current Events Language",
+        type: "grammar",
+        estimatedMinutes: 20,
+        completed: false,
+        sections: [
+          {
+            title: "Journalistic Language",
+            content:
+              "Romanian news uses a distinct register with specific vocabulary for reporting events, attribution, and commentary. Recognizing these patterns is essential for B2 reading and listening comprehension.",
+            examples: [
+              {
+                romanian: "Potrivit surselor oficiale...",
+                phonetic: "[po-TREE-veet SOOR-seh-lor o-fee-CHYAH-leh]",
+                english: "According to official sources...",
+              },
+              {
+                romanian: "Se anunță că urmează negocieri.",
+                phonetic: "[seh ah-NOON-tsuh kuh oor-MYAH-zuh neh-go-CHYEHR]",
+                english: "It is announced that negotiations will follow.",
+              },
+              {
+                romanian: "Declarația a fost primită cu rezerve.",
+                phonetic: "[deh-klah-RAH-tsyah ah fost pree-MEE-tuh koo reh-ZEHR-veh]",
+                english: "The statement was received with reservations.",
+              },
+            ],
+          },
+          {
+            title: "Political & Social Vocabulary",
+            content:
+              "B2 learners need to discuss politics, economy, and society. Key vocabulary includes terms for governance, rights, institutions, and social issues.",
+            examples: [
+              {
+                romanian: "Guvernul a adoptat o nouă lege.",
+                phonetic: "[goo-VEHR-nool ah ah-dop-TAHT oh NOH-wuh LEH-geh]",
+                english: "The government adopted a new law.",
+              },
+              {
+                romanian: "Drepturile omului trebuie respectate.",
+                phonetic: "[drep-TOO-ree-leh OH-moo-loo TREH-boo-yeh reh-spek-TAH-teh]",
+                english: "Human rights must be respected.",
+              },
+              {
+                romanian: "Rata șomajului a scăzut.",
+                phonetic: "[RAH-tah sho-MAH-zhoo-loo ah skuh-ZOOT]",
+                english: "The unemployment rate has decreased.",
+              },
+            ],
+          },
+          {
+            title: "Opinion & Argumentation",
+            content:
+              "Expressing opinion and building arguments in Romanian requires specific phrases. At B2, you should be able to agree, disagree, qualify, and hedge in formal contexts.",
+            examples: [
+              {
+                romanian: "Din punctul meu de vedere...",
+                phonetic: "[deen POONK-tool MYEW deh VEH-deh-reh]",
+                english: "From my point of view...",
+              },
+              {
+                romanian: "Nu sunt de acord cu afirmația că...",
+                phonetic: "[noo soont deh ah-CORD koo ah-feer-MAH-tsyah kuh]",
+                english: "I don't agree with the claim that...",
+              },
+              {
+                romanian: "Este adevărat că..., dar trebuie să luăm în considerare și...",
+                phonetic: "[yeh-steh ah-deh-vuh-RAHT kuh... dar TREH-boo-yeh suh loo-UHM un kon-see-deh-RAH-reh shee]",
+                english: "It is true that..., but we must also take into consideration...",
+              },
+            ],
+          },
+        ],
+        exercises: [
+          {
+            id: "b2-l13-e1",
+            type: "multiple-choice",
+            question: "What does 'Potrivit surselor oficiale' mean?",
+            options: [
+              { id: "a", text: "Despite official sources" },
+              { id: "b", text: "According to official sources" },
+              { id: "c", text: "Against official sources" },
+              { id: "d", text: "Without official sources" },
+            ],
+            correctAnswer: "b",
+            explanation:
+              "'Potrivit' = according to / in accordance with. 'Potrivit surselor oficiale' is a standard journalistic attribution phrase meaning 'according to official sources'.",
+          },
+          {
+            id: "b2-l13-e2",
+            type: "fill-blank",
+            question: "Complete: 'Din ___ meu de vedere...' (From my point of view...)",
+            blankSentence: "Din ___ meu de vedere...",
+            correctAnswer: "punctul",
+            explanation:
+              "'Din punctul meu de vedere' (from my point of view) is a key phrase for expressing personal perspective in formal Romanian. 'Punct de vedere' = point of view.",
+          },
+          {
+            id: "b2-l13-e3",
+            type: "multiple-choice",
+            question: "How do you say 'I disagree with...' in Romanian?",
+            options: [
+              { id: "a", text: "Sunt de acord cu..." },
+              { id: "b", text: "Nu știu despre..." },
+              { id: "c", text: "Nu sunt de acord cu..." },
+              { id: "d", text: "Mi se pare că..." },
+            ],
+            correctAnswer: "c",
+            explanation:
+              "'Nu sunt de acord cu...' (I am not in agreement with...) is the standard way to express disagreement. 'Sunt de acord cu...' means 'I agree with...'",
+          },
+        ],
+      },
+      {
+        id: "b2-l14",
+        title: "Pronunciation: Mastery & Fluency Practice",
+        type: "pronunciation",
+        estimatedMinutes: 18,
+        completed: false,
+        sections: [
+          {
+            title: "Difficult Sound Clusters",
+            content:
+              "Romanian has challenging consonant clusters that don't exist in English. Practicing these clusters is key to sounding natural. Focus on clusters with 'str-', 'dv-', 'pt-', and '-ndr-'.",
+            examples: [
+              {
+                romanian: "stradă (street)",
+                phonetic: "[STRAH-duh]",
+                english: "Initial 'str-' cluster — common and important",
+              },
+              {
+                romanian: "drept (right / law)",
+                phonetic: "[drept]",
+                english: "'dr-' + final '-pt' cluster — both occur frequently",
+              },
+              {
+                romanian: "împătrit (fourfold)",
+                phonetic: "[um-puh-TREET]",
+                english: "Interior 'ptr-' cluster — requires lip and tongue coordination",
+              },
+            ],
+          },
+          {
+            title: "Rhythm & Natural Speed",
+            content:
+              "Romanian has a regular stress-timed rhythm. Unstressed syllables are reduced but not as drastically as in English. Achieving natural rhythm means not over-stressing every syllable.",
+            examples: [
+              {
+                romanian: "Mă duc la magazin să cumpăr pâine.",
+                phonetic: "[muh dook lah mah-gah-ZEEN suh KOOM-pur PUY-neh]",
+                english: "I'm going to the store to buy bread. (natural sentence rhythm)",
+              },
+              {
+                romanian: "Nu mai am timp să termin.",
+                phonetic: "[noo my am teemp suh TEHR-meen]",
+                english: "I no longer have time to finish. (reduced 'mai' and 'am')",
+              },
+              {
+                romanian: "Ce crezi că s-a întâmplat?",
+                phonetic: "[cheh KREHZ kuh sah un-TUM-plaht]",
+                english: "What do you think happened? (blended connected speech)",
+              },
+            ],
+          },
+          {
+            title: "Fluency Phrases & Fillers",
+            content:
+              "Natural fluency includes knowing how to fill pauses and buy time while thinking. Romanian speakers use specific fillers and hesitation phrases that are different from English 'um' and 'uh'.",
+            examples: [
+              {
+                romanian: "Adică... (I mean... / That is to say...)",
+                phonetic: "[ah-DEE-kuh]",
+                english: "A very common filler, used constantly in informal speech",
+              },
+              {
+                romanian: "Mă rog... (Well... / I mean, you know...)",
+                phonetic: "[muh rog]",
+                english: "Hesitation filler, softer and more formal-ish",
+              },
+              {
+                romanian: "Cum să zic... (How shall I put it...)",
+                phonetic: "[koom suh zeek]",
+                english: "Used when searching for the right word",
+              },
+            ],
+          },
+        ],
+        exercises: [
+          {
+            id: "b2-l14-e1",
+            type: "multiple-choice",
+            question: "Which Romanian filler is used when searching for the right word?",
+            options: [
+              { id: "a", text: "Adică" },
+              { id: "b", text: "Mă rog" },
+              { id: "c", text: "Cum să zic" },
+              { id: "d", text: "Potrivit" },
+            ],
+            correctAnswer: "c",
+            explanation:
+              "'Cum să zic...' (How shall I put it...) is used when a speaker is searching for the right word or phrasing. 'Adică' = I mean / that is; 'Mă rog' = well / I suppose.",
+          },
+          {
+            id: "b2-l14-e2",
+            type: "fill-blank",
+            question: "What is the meaning of the filler 'Adică...' in Romanian?",
+            blankSentence: "'Adică' means '___' in English",
+            correctAnswer: "I mean",
+            explanation:
+              "'Adică' is the most common filler in Romanian informal speech. It corresponds to English 'I mean', 'that is to say', or simply a hesitation pause filler.",
+          },
+          {
+            id: "b2-l14-e3",
+            type: "multiple-choice",
+            question: "What consonant cluster begins the word 'stradă'?",
+            options: [
+              { id: "a", text: "st-" },
+              { id: "b", text: "str-" },
+              { id: "c", text: "dr-" },
+              { id: "d", text: "tr-" },
+            ],
+            correctAnswer: "b",
+            explanation:
+              "'Stradă' (street) begins with the 'str-' cluster. This three-consonant onset is very common in Romanian and must be pronounced without inserting a vowel between the consonants.",
+          },
+        ],
+      },
+      {
+        id: "b2-l15",
+        title: "Culture, Literature & Authentic Romanian",
+        type: "grammar",
+        estimatedMinutes: 22,
+        completed: false,
+        sections: [
+          {
+            title: "Mihai Eminescu & Literary Romanian",
+            content:
+              "Mihai Eminescu (1850–1889) is Romania's national poet. His language established much of modern literary Romanian. Reading and understanding Eminescu — even partially — is a cultural milestone for learners.",
+            examples: [
+              {
+                romanian: "La steaua care-a răsărit / E-o cale-atât de lungă...",
+                phonetic: "[lah STEH-wah KAH-reh ah ruh-suh-REET / yeh oh KAH-leh ah-TUT deh LOON-guh]",
+                english: "To the star that has risen / It's a path so long... (from 'La Steaua')",
+              },
+              {
+                romanian: "A fi sau a nu fi — aceasta e întrebarea.",
+                phonetic: "[ah fee sow ah noo fee — ah-CHES-tah yeh un-treh-BAH-reh-ah]",
+                english: "To be or not to be — that is the question. (Romanian Hamlet)",
+              },
+              {
+                romanian: "Limba română este o limbă romanică.",
+                phonetic: "[LEEM-bah ro-MUH-nuh yeh-steh oh LEEM-buh ro-MAH-nee-kuh]",
+                english: "The Romanian language is a Romance language.",
+              },
+            ],
+          },
+          {
+            title: "Romanian Traditions & Cultural Identity",
+            content:
+              "Understanding cultural references makes you a more complete speaker. Romanian culture is rich with traditions from Mărțișor (March 1st spring celebration) to colinde (Christmas carols) and sarmale (festive food).",
+            examples: [
+              {
+                romanian: "De Mărțișor se oferă mici talismane roș-albe.",
+                phonetic: "[deh Mur-TSEE-shor seh o-FEH-ruh meech tah-lees-MAH-neh rosh-AL-beh]",
+                english: "For Mărțișor, small red-and-white talismans are given.",
+              },
+              {
+                romanian: "Colindul este o tradiție importantă de Crăciun.",
+                phonetic: "[ko-LEEN-dool yeh-steh oh trah-dee-TSYEH eem-por-TAHN-tuh deh Kruh-CHYOON]",
+                english: "Carol singing is an important Christmas tradition.",
+              },
+              {
+                romanian: "Sarmale cu mămăligă — mâncarea tradițională.",
+                phonetic: "[SAR-mah-leh koo muh-muh-LEE-guh — mun-KAH-reh-ah trah-dee-tsyo-NAH-luh]",
+                english: "Stuffed cabbage rolls with polenta — the traditional dish.",
+              },
+            ],
+          },
+          {
+            title: "Reaching B2: What You Can Now Do",
+            content:
+              "At B2, you can understand the main ideas of complex texts on concrete and abstract topics. You can interact with native speakers with a degree of fluency and spontaneity. You can produce clear, detailed text on a wide range of subjects.",
+            examples: [
+              {
+                romanian: "Pot citi ziare și reviste românești.",
+                phonetic: "[pot CHEE-tee zee-AH-reh shee reh-VEES-teh ro-MUH-neshty]",
+                english: "I can read Romanian newspapers and magazines.",
+              },
+              {
+                romanian: "Pot urmări filme românești fără subtitrări.",
+                phonetic: "[pot oor-MUH-ree FEEL-meh ro-MUH-neshty fuh-RUH soob-tee-TRUH-ree]",
+                english: "I can follow Romanian films without subtitles.",
+              },
+              {
+                romanian: "Pot purta o conversație fluentă cu un vorbitor nativ.",
+                phonetic: "[pot POOR-tah oh kon-vehr-SAH-tsyeh floo-EN-tuh koo oon vor-bee-TOR nah-TEEV]",
+                english: "I can hold a fluent conversation with a native speaker.",
+              },
+            ],
+          },
+        ],
+        exercises: [
+          {
+            id: "b2-l15-e1",
+            type: "multiple-choice",
+            question: "Who is Romania's national poet?",
+            options: [
+              { id: "a", text: "Ion Creangă" },
+              { id: "b", text: "Mihai Eminescu" },
+              { id: "c", text: "Lucian Blaga" },
+              { id: "d", text: "Tudor Arghezi" },
+            ],
+            correctAnswer: "b",
+            explanation:
+              "Mihai Eminescu (1850–1889) is Romania's national and most celebrated poet. His works established modern literary Romanian and he remains a central figure in Romanian cultural identity.",
+          },
+          {
+            id: "b2-l15-e2",
+            type: "fill-blank",
+            question: "Complete: 'Pot citi ziare și ___ românești.' (I can read Romanian newspapers and magazines.)",
+            blankSentence: "Pot citi ziare și ___ românești.",
+            correctAnswer: "reviste",
+            explanation:
+              "'Reviste' = magazines (from 'revistă'). 'Ziare și reviste' (newspapers and magazines) is a common pairing. At B2, reading Romanian press is a realistic and measurable goal.",
+          },
+          {
+            id: "b2-l15-e3",
+            type: "multiple-choice",
+            question: "What is Mărțișor?",
+            options: [
+              { id: "a", text: "A traditional Romanian Christmas carol" },
+              { id: "b", text: "A festive soup eaten at Easter" },
+              { id: "c", text: "A March 1st spring celebration with red-and-white talismans" },
+              { id: "d", text: "A harvest festival in autumn" },
+            ],
+            correctAnswer: "c",
+            explanation:
+              "Mărțișor is celebrated on March 1st to welcome spring. Small red-and-white braided talismans (also called mărțișoare) are given, especially to women. It's a uniquely Romanian tradition.",
           },
         ],
       },
